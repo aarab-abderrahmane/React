@@ -1,4 +1,4 @@
-import Ex1 from "./ex1/app.js"
+import Ex1 from "./ex1/ex1.js"
 
 function App() {
 

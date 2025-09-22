@@ -1,0 +1,22 @@
+.hide{
+    display : none ; 
+}
+
+
+.section{
+  width: 100%;
+  display : flex;
+  flex-direction : column ; 
+  align-items : center
+}
+
+
+.btn{
+    padding :5px 10px ; 
+    border : 1px solid black ;
+    font-weight: bold ;
+    border-radius : 7px ;
+    cursor : pointer;
+}
+
+
