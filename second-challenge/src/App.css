@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.first-section{
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap:10px
+}
