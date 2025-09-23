@@ -1,4 +1,3 @@
-import '../App.css'
 import "./ex1.css"
 
 const btn_style={
