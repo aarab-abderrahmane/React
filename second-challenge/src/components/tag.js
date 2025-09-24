@@ -1,8 +1,8 @@
 function Tag(props){
 
-    const title = props.title
-    const child = props.children
-    const img = props.photo
+    const title = props.title 
+    const child = props.children 
+    const img = props.photo ?? "";
 
     console.log(img)
 
