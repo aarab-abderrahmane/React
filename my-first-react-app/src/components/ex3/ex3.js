@@ -1,20 +1,30 @@
-import { useState, useEffect } from "react";
+// import {useState,useEffect} from 'react';
 
-function Timer() {
-  const [seconds, setSeconds] = useState(0);
+import React from "react";
 
-  useEffect(() => {
-    const interval = setInterval(() => setSeconds(s=>s+1), 1000);
-    return () => clearInterval(interval); // cleanup
-  }, []        )
+function Timer(){
 
-  return <p>Timer: {seconds} sec</p>;
+
+    const [seconds,setCount] = React.useState(0);
+    
+    React.useEffect(()=>{
+
+
+        const Intervall = setInterval(()=>{
+
+            setCount(s=> s+1)
+
+        },1000);
+
+        return()=>clearInterval(Intervall)
+
+    },[])
+
+
+    return(<h1>{seconds}</h1>)
+
+
 }
 
 
-export default Timer ; 
-
-
-
-
-
+export default Timer;
