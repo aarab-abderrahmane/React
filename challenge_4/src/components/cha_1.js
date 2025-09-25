@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { version } from "react";
+
+console.log(version)
 
 export default function Scoreboard() {
 
