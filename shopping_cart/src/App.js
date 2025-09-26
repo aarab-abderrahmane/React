@@ -1,4 +1,5 @@
-
+import Card from './components/card'
+import { useState } from 'react';
 
 const Data = [
             {
@@ -31,27 +32,30 @@ const Data = [
 
 function App() {
 
+  const [prodIds,setProdIds] = useState([])
+
+  function handleAdd(id){
+
+    if(!prodIds.includes(id)){
+      setProdIds([...prodIds,id])
+
+    }
+
+  }
+
+  console.log(prodIds)
+
   return (
     <div className="container py-5">
       <h1 className="text-center mb-4">Shopping Cart</h1>
         <div  className="row " >
 
-          {Data.map(obj=>{
-              const  {image,name,price,id} = obj;
-              <div className="col-md-4 mb-4">
-              <div className="card shadow-sm">
+          {Data.map((obj)=>{
+              const {name,image,price,id} = obj
 
-                      <img src={image} alt="card_image"></img>
-                      <div className="card-body text-center">
-                          <h5 >{name}</h5>
-                          <p className="card-text">$ {price}</p>
-                          <button className="btn btn-primary" value={id} >Add to Card</button>
-                      </div>
-              </div>
+              return <Card name={name} image={image} price={price} id={id} key={id} handleAdd={handleAdd} />;
 
-          
-              </div>
-            })}
+          })}
 
       </div>
 
