@@ -1,5 +1,7 @@
 import Card from './components/card'
-import { useState } from 'react';
+import Basket from './components/Basket'
+import { useState  , useEffect} from 'react';
+
 
 const Data = [
             {
@@ -30,9 +32,12 @@ const Data = [
 ]
 
 
+
 function App() {
 
   const [prodIds,setProdIds] = useState([])
+  
+  const [numProd,setNumProd] = useState(0)
 
   function handleAdd(id){
 
@@ -43,11 +48,31 @@ function App() {
 
   }
 
-  console.log(prodIds)
+
+  useEffect(()=>{
+
+        setNumProd(prodIds.length)
+
+  },[prodIds])
+
+
+
+  // console.log(prodIds)
+
+
 
   return (
+    
+    <>
+    <header className="d-flex justify-content-between align-items-center border-bottom border-2 border-black p-4">
+        <h1>Shopping Cart</h1>
+        <button className="position-relative border-0 bg-transparent " style={{width:"48px"}}>
+          <i className="bi bi-cart2  me-4 fs-3"></i>
+          <span className="position-absolute top-0 badge rounded-pill  " style={{backgroundColor : numProd!==0 ? "red" : "orange" }} >{numProd}</span>
+        </button>
+    </header>
+
     <div className="container py-5">
-      <h1 className="text-center mb-4">Shopping Cart</h1>
         <div  className="row " >
 
           {Data.map((obj)=>{
@@ -59,13 +84,12 @@ function App() {
 
       </div>
 
-      <div  className='mt-5'>
-          <h3>🛒 Cart</h3>
-
-      </div>
+     
       
 
     </div>
+
+    </>
   );
 }
 
