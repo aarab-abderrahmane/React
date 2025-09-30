@@ -1,7 +1,7 @@
-import { use, useState } from "react";
+import {  useState } from "react";
 
 
-function App() {
+export default function App() {
 
 
 
@@ -16,6 +16,9 @@ function App() {
 
 
   const [isAllCompleted,setisALLcompeted] = useState(true)
+
+  const [messageContainer, setMessageContainer] = useState([])
+
 
 
 
@@ -33,10 +36,8 @@ function App() {
       let AllFields = 0 ;
       prevFieldsValues.forEach(obj=>{
 
-          if(obj.value.length > 1 || typeof(obj.value)==="boolean"){
-            console.log(obj)
+          if(obj.value.length >= 1 || typeof(obj.value)==="boolean"){
               AllFields ++ 
-              console.log(AllFields)
           }
           
 
@@ -69,13 +70,74 @@ function App() {
 
 
 
+  function stopSubmit(e){
+
+    e.preventDefault()
+
+    checkAllFields()
+
+
+  }
+
+
+  function checkAllFields(){
+
+    let fieldsErrors = []
+    fieldsValues.forEach(field=>{
+
+        if (field.type==="name" && !(/^[a-zA-Z]{4,}$/).test(field.value)) {
+            fieldsErrors.push('you must enter at least four characters.')
+
+        }else if (field.type==="age"   ){
+
+            if(isNaN(field.value) ){
+              fieldsErrors.push('You must enter a valid number for the age.')
+            
+            }else if(!(/^1[89]|2[09]|30$/).test(Number(field.value))){
+
+                fieldsErrors.push('You must enter a number between 18 and 30 for age.')
+            }
+
+
+        }else if (field.type=== "phone" ){
+
+              if(isNaN(field.value)){
+                fieldsErrors.push('you must entre a valid number for the phone.')
+
+              }else if ( !(/^[0-9]{8,}$/).test(Number(field.value))){
+
+                  fieldsErrors.push('you must enter a series of phone numbers bigger than 8 caracters.')
+              }
+
+        }
+
+    })
+
+
+    if(fieldsErrors.length > 0){
+        const elements = fieldsErrors.map((error,index)=>{
+            if(index===0){
+             
+                return (<> <h2 className="font-bold text-xl">errors : </h2>  <h4 className="w-full text-center text-yellow-300 text-lg"  key={index}>{error}</h4> </>)
+
+            }
+            return <h4 className="w-full text-center text-yellow-300 text-lg"  key={index}>{error}</h4>
+        })
+
+        setMessageContainer(elements)
+
+    }else{
+      setMessageContainer([<h3 className="text-green-300 font-bold text-xl">infromations sent successfully</h3>])
+    }
+
+  }
+
 
 
 
   return (
       
-
-        <div  className=" w-[100vw]  md:w-[clamp(500px,70vw,700px)]  h-auto bg-gray-500  md:border-2 border-white     rounded-xl flex flex-col items-center p-4">
+        <div  className="relative w-[100vw]  md:w-[clamp(500px,70vw,700px)]  h-auto bg-gray-500  md:border-2 border-white     rounded-xl flex flex-col items-center p-4 "  >
 
 
 
@@ -121,24 +183,28 @@ function App() {
                     </select>
 
 
+                    <button type="submit" className="bg-green-900 text-green-400 py-3 px-5 text-md cursor-pointer rounded-xl border-2 hover:bg-green-800" disabled={isAllCompleted} >Submit</button>
 
-                    <button type="submit" className="bg-green-900 text-green-400 py-3 px-5 text-md cursor-pointer rounded-xl border-2 hover:bg-green-800  " disabled={isAllCompleted } >Submit</button>
             </form>
+
+
+            <div className="absolute md:w-[clamp(300px,50vw,550px)] w-[90vw] top-1/2 left-1/2 transfrom -translate-x-1/2 -translate-y-1/2 bg-warning  flex flex-col items-center justify-center gap-3 border-2 border-white rounded-xl p-4  backdrop-filter backdrop-blur-sm bg-white/10 " style={{display:messageContainer.length>0 ? "flex" : "none"}}>
+                
+                {messageContainer}
+                <button className="bg-red-600 border-2 border-red-300 text-black py-2 px-5 rounded-2xl cursor-pointer hover:bg-red-400"  onClick={()=>setMessageContainer([])}>Close</button>
+            </div>
 
             
         </div>
 
 
+
+
   );
-}
-
-
-function stopSubmit(e){
-
-    e.preventDefault()
-    console.log("is Submit..")
+  
 
 }
 
 
-export default App;
+
+
