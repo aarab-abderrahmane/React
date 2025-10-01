@@ -122,17 +122,21 @@ function App() {
   function onChangeQty(prodId , type){
 
         const target_prod = basketProds.find(obj=>obj.prodId === prodId)
+        const original_price = Data.find(prod=>prod.id===prodId)
 
         if (type==="increase"){
           
             if( target_prod.qty < 20){
 
-              const newBasketProd = basketProds.map(obj=>{
 
+              const newBasketProd = basketProds.map(obj=>{
                   if (obj.prodId === prodId){
-                    return {...obj,qty:obj.qty+1}
+
+                    const totalPrice = parseFloat(((obj.qty+1)*original_price.price).toFixed(2))
+                    return {...obj,qty:obj.qty+1,total:totalPrice}
                   }
 
+                  
                   return obj
 
               })
@@ -149,8 +153,10 @@ function App() {
 
               const newBasketProd = basketProds.map(obj=>{
 
+                  const totalPrice = parseFloat((obj.total-original_price.price).toFixed(2))
+
                   if (obj.prodId === prodId){
-                    return {...obj,qty:obj.qty-1}
+                    return {...obj,qty:obj.qty-1,total:totalPrice}
                   }
 
                   return obj
@@ -159,10 +165,10 @@ function App() {
 
               setbasketProds(newBasketProd)
 
-        }else{
+         }//else{
 
-            DelFromBasket(prodId)
-        }
+        //     DelFromBasket(prodId)
+        // }
 
 
   }
@@ -204,7 +210,7 @@ function App() {
 
     {/* basket */}
 
-    <div style={{display : isVisible? "none" : "block" , flex:"1"}} className='position-relative  p-4  '  >
+    <div style={{display : isVisible? "none" : "block" , flex:"1"}} className=' position-relative  p-4  '  >
           <Basket closeBasket={CloseBasket} basketProds={basketProds} prodData={Data} DelFromBasket={DelFromBasket} onChangeQty={onChangeQty} />
 
     </div>
