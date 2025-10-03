@@ -40,6 +40,31 @@
         gap:15px
       }
 
+
+      .card {
+          transition: transform 0.4s linear;
+      }
+
+      .card  img{
+        height: 300px;
+        overflow: hidden;
+        object-fit: cover;
+        transition: transform 0.7s linear;
+
+      }
+
+      .card:hover {
+          transform : scale(1.04);
+          cursor : pointer 
+      }
+
+      .card:hover img {
+        transform: scale(1.1);
+      }
+
+
+      
+      
     </style>
     <title>React App</title>
   </head>

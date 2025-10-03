@@ -10,10 +10,12 @@ function Card(props){
 
     return (
 
-         <div className="col-md-4 mb-4 ">
+         <div className="col-md-4 mb-4 p-4 ">
               <div className="card shadow-sm border-2 "  style={{backgroundColor:"#FFFFFF",borderColor:"#E5E7EB"}}>
+                        <div style={{height:"250px",overflow:"hidden"}}>
+                             <img src={image} alt="card_image" style={image_stye}></img>
 
-                      <img src={image} alt="card_image" style={image_stye}></img>
+                        </div>
                       <div className="card-body text-center">
                           <h5 style={{color:"#111827"}} >{name}</h5>
                           <p className="card-text" style={{color:"#6B7280"}}>$ {price}</p>
