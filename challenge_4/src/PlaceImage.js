@@ -11,8 +11,6 @@ export default function App() {
   const [isLarge, setIsLarge] = useState(false);
   const imageSize = isLarge ? 150 : 100;
 
-
-
   return (
     <>
       <label>
@@ -33,13 +31,7 @@ export default function App() {
     </>
   )
 
-
 }
-
-
-
-
-
 
 
 // components (childeren)

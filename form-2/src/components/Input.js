@@ -22,7 +22,6 @@ export default function Input({ InputId }) {
             type="text"
             className="form-control"
             id="inputX"
-            pattern={target_input.regex}
             placeholder="Type something..."
             value ={target_input.inputValue}
             onChange={(e)=>handleChange(e,InputId)}
