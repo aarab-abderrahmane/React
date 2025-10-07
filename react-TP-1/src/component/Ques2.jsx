@@ -6,11 +6,10 @@ export  default function AutoFocusInput(){
         useEffect(()=>{
 
                 inputRef.current.focus()
-                inputRef.current.select()
                 console.log(inputRef.current.value)
 
-        },[])
+        },[inputRef.current.value])
 
-        return <input type="text" placeholder="Votre nom" ref={inputRef} />; 
+        return <input type="text" placeholder="Votre nom" ref={inputRef} className="h-30" />; 
 
 }

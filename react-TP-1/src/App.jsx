@@ -1,5 +1,6 @@
 import Counter from './component/Ques1'
 import AutoFocusInput from './component/Ques2'
+import UserList  from './component/Ques3'
 
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
 
           <Counter />
 
-          <AutoFocusInput />
+          {/* <AutoFocusInput /> */}
+
+
+          <UserList />
 
     </div>
   )
