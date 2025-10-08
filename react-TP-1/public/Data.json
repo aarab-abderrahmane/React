@@ -1,0 +1,12 @@
+[
+  { "id": 1, "matricule": 1454, "nom": "Alaoui", "codepostal": 20400, "ville": "Casa", "moyenne": 12.56 },
+  { "id": 2, "matricule": 1455, "nom": "Mansouri", "codepostal": 20400, "ville": "Casa", "moyenne": 14.67 },
+  { "id": 3, "matricule": 1456, "nom": "Bennani", "codepostal": 10000, "ville": "Rabat", "moyenne": 15.23 },
+  { "id": 4, "matricule": 1457, "nom": "El Amrani", "codepostal": 90000, "ville": "Tanger", "moyenne": 11.89 },
+  { "id": 5, "matricule": 1458, "nom": "Kabbaj", "codepostal": 30000, "ville": "Fès", "moyenne": 13.45 },
+  { "id": 6, "matricule": 1459, "nom": "Zouhair", "codepostal": 40000, "ville": "Marrakech", "moyenne": 16.1 },
+  { "id": 7, "matricule": 1460, "nom": "Lahlou", "codepostal": 50000, "ville": "Meknès", "moyenne": 10.95 },
+  { "id": 8, "matricule": 1461, "nom": "Haddad", "codepostal": 60000, "ville": "Oujda", "moyenne": 14.2 },
+  { "id": 9, "matricule": 1462, "nom": "Naciri", "codepostal": 70000, "ville": "Agadir", "moyenne": 13.87 },
+  { "id": 10, "matricule": 1463, "nom": "Touimi", "codepostal": 80000, "ville": "Tétouan", "moyenne": 15.9 }
+]
