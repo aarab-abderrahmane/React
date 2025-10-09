@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { StagiaireContext } from "../App";
+import {Link} from 'react-router'
 
 
 export default function ListStagiares(){
 
-    const {statgiaires} = useContext(StagiaireContext)
+    const {statgiaires,useStagiaireActions,sCheckbox} = useContext(StagiaireContext)
+    const { HandleEdit, HandleDelete,HandleCheck ,CheckALL} = useStagiaireActions();
 
     return (
 
@@ -117,6 +119,9 @@ export default function ListStagiares(){
                     <input
                     id="checkbox-all-search"
                     type="checkbox"
+
+                    checked={sCheckbox['checkAll']}
+                    onChange={(e)=>CheckALL(e.target.checked)}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm 
                     focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 
                     focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -145,7 +150,9 @@ export default function ListStagiares(){
                     <div className="flex items-center">
                     <input
                         id={`checkbox-table-${i}`}
+                        value={id}
                         type="checkbox"
+                        onClick={(e)=>HandleCheck(e.target.value)}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm 
                         focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 
                         focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -166,13 +173,20 @@ export default function ListStagiares(){
                 <td className="px-6 py-4">{codepostal}</td>
                 <td className="px-6 py-4">{ville}</td>
                 <td className="px-6 py-4">{moyenne}</td>
-                <td className="px-6 py-4">
-                    <a
+                <td className="px-6 py-4 flex gap-4 ">
+                   
+                    <Link to={`/listStagiaires/edit/${id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >Edit
+                    </Link>
+
+                     <a
                     href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                    onClick={()=>HandleDelete(id)}
                     >
-                    Edit
+                    Delete
                     </a>
+
                 </td>
                 </tr>
             ))}
