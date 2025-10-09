@@ -26,16 +26,25 @@ export default function  useStagiaireActions(){
                 ...prev , [id] : !prev[id]
             }))
 
+
     }
 
     function CheckALL(isChecked) {
+        console.log(isChecked)
     const newsCheckbox = Object.fromEntries(
         Object.keys(sCheckbox).map(key => [key, isChecked])
     );
     setsCheckbox(newsCheckbox);
-}
+    }
 
-    return  {HandleDelete,HandleEdit,HandleCheck,CheckALL}
+
+    function DeleteSelected(){
+
+        const newSCheckbox = Object.fromEntries(Object.keys(sCheckbox).filter(key=>{ if(!sCheckbox[key]){return [key,false]} }))
+        setsCheckbox(newSCheckbox)
+    }
+
+    return  {HandleDelete,HandleEdit,HandleCheck,CheckALL,DeleteSelected}
 
 
 }

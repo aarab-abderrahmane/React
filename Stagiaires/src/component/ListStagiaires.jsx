@@ -6,14 +6,22 @@ import {Link} from 'react-router'
 export default function ListStagiares(){
 
     const {statgiaires,useStagiaireActions,sCheckbox} = useContext(StagiaireContext)
-    const { HandleEdit, HandleDelete,HandleCheck ,CheckALL} = useStagiaireActions();
+    const { HandleEdit, HandleDelete,HandleCheck ,CheckALL,DeleteSelected} = useStagiaireActions();
+
+    if(sCheckbox['checkAll']){
+      console.log("checkox is true")
+    }else{
+      console.log("is false")
+    }
 
     return (
 
 
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg bg-blue-200 p-5 flex-1">
       <div className="flex flex-col sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-        <div>
+
+        <div className="flex items-center gap-4">
+          <div>
           <button
             id="dropdownRadioButton"
             data-dropdown-toggle="dropdownRadio"
@@ -77,7 +85,14 @@ export default function ListStagiares(){
               )}
             </ul>
           </div>
+          </div>
+
+          <button style={{display:sCheckbox['checkAll'] ? 'block' : "none"}}
+          onClick={()=>DeleteSelected()}
+          className="bg-red-500 px-3 py-1 cursor-pointer rounded-xl hover:bg-red-400">
+            <i class="bi bi-trash3-fill text-xl"></i></button>
         </div>
+
 
         <label htmlFor="table-search" className="sr-only">
           Search
@@ -152,7 +167,8 @@ export default function ListStagiares(){
                         id={`checkbox-table-${i}`}
                         value={id}
                         type="checkbox"
-                        onClick={(e)=>HandleCheck(e.target.value)}
+                        checked={sCheckbox[id]}
+                        onChange={(e)=>HandleCheck(e.target.value)}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm 
                         focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 
                         focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
