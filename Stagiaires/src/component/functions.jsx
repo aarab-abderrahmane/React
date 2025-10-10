@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext ,useEffect} from "react"
 import {StagiaireContext} from '../App'
 
 
@@ -9,7 +9,7 @@ export default function  useStagiaireActions(){
 
 
     function HandleEdit(id){
- 
+
         console.log("edit")
     }
 
@@ -40,9 +40,14 @@ export default function  useStagiaireActions(){
 
     function DeleteSelected(){
 
-        const newSCheckbox = Object.fromEntries(Object.keys(sCheckbox).filter(key=>{ if(!sCheckbox[key]){return [key,false]} }))
-        setsCheckbox(newSCheckbox)
+        const newStagiares = statgiaires.filter(s=>!sCheckbox[s.id])
+        setStagiaires(newStagiares)
+
+
     }
+
+
+    
 
     return  {HandleDelete,HandleEdit,HandleCheck,CheckALL,DeleteSelected}
 

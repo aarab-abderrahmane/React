@@ -1,18 +1,21 @@
-import { useContext } from "react";
+import { useContext , useEffect } from "react";
 import { StagiaireContext } from "../App";
 import {Link} from 'react-router'
 
 
 export default function ListStagiares(){
 
-    const {statgiaires,useStagiaireActions,sCheckbox} = useContext(StagiaireContext)
+    const {statgiaires,useStagiaireActions,sCheckbox,setsCheckbox} = useContext(StagiaireContext)
     const { HandleEdit, HandleDelete,HandleCheck ,CheckALL,DeleteSelected} = useStagiaireActions();
 
-    if(sCheckbox['checkAll']){
-      console.log("checkox is true")
-    }else{
-      console.log("is false")
-    }
+    useEffect(() => {
+        if (statgiaires) {
+        let Checkboxs = Object.fromEntries(statgiaires.map(s => ([s.id,false])));
+        Checkboxs = {...Checkboxs,checkAll:false}
+        setsCheckbox(Checkboxs);
+        }
+    }, [statgiaires]);
+        
 
     return (
 

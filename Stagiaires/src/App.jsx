@@ -6,14 +6,15 @@ import ListStagiares from './component/ListStagiaires'
 import Error from './component/Error'
 import  useStagiaireActions from './component/functions'
 
-export const StagiaireContext = createContext()
+export const StagiaireContext = createContext({checkAll:false})
 
 
 function App() {
 
   const [statgiaires , setStagiaires] = useState([])
-  const [sCheckbox,setsCheckbox] = useState()
+  const [sCheckbox,setsCheckbox] = useState({checkALl:false})
   const [error,setError] = useState('')
+  
   
   useEffect(()=>{
 
@@ -41,20 +42,9 @@ function App() {
   },[])
 
 
-  useEffect(() => {
-    if (statgiaires) {
-      let Checkboxs = Object.fromEntries(statgiaires.map(s => ([s.id,false])));
-      Checkboxs = {...Checkboxs,checkAll:false}
-      setsCheckbox(Checkboxs);
-    }
-  }, [statgiaires]);
-  
-
-
-
   return (
       <StagiaireContext.Provider  value={{statgiaires,setStagiaires,useStagiaireActions,sCheckbox,setsCheckbox,error}}>
-        <BrowserRouter>
+                <BrowserRouter>
             <Header />
             <Routes>
               <Route path='/' element={<Home />} />
@@ -68,6 +58,11 @@ function App() {
         </BrowserRouter>
       </StagiaireContext.Provider>
   )
+
+
 }
+
+
+
 
 export default App
