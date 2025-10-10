@@ -1,0 +1,126 @@
+
+
+### 1. **Méthode de gestion de projet :**
+
+#### a) Descendante (en cascade) — Classique
+
+* C’est une méthode **linéaire** et séquentielle.
+* Chaque phase doit être terminée avant de passer à la suivante.
+* Exemple :
+
+| Phases                 | Description                |
+| ---------------------- | -------------------------- |
+| Analyse                | Comprendre les besoins     |
+| Conception             | Concevoir la solution      |
+| Développement (codage) | Programmer le projet       |
+| Test                   | Vérifier que ça fonctionne |
+| Déploiement            | Mise en production         |
+
+* Exemple concret :
+  Tu veux construire une maison. Tu fais d’abord les plans (analyse + conception), puis la construction (développement), enfin la déco (test + déploiement).
+
+---
+
+#### b) Ascendante (Agile - Scrum)
+
+* Méthode **itérative et incrémentale**.
+* Le projet est divisé en petites tâches (sprints), avec des versions livrables fréquentes.
+* Exemple :
+
+| Sprint   | Objectif                         | Livrable              |
+| -------- | -------------------------------- | --------------------- |
+| Sprint 1 | MVP (Minimum Viable Product)     | Prototype fonctionnel |
+| Sprint 2 | Ajouter fonctionnalités          | Version améliorée     |
+| Sprint 3 | Correction bugs et optimisations | Produit final         |
+
+* Exemple concret :
+  Construire une maison pièce par pièce, chaque pièce est fonctionnelle à la fin d’un sprint.
+
+---
+
+### 2. **Cycle de vie d’un projet (ses étapes)**
+
+1. **Analyse** : Comprendre les besoins des utilisateurs.
+2. **Conception** : Dessiner les plans techniques (ex : diagrammes UML).
+3. **Codage** : Programmer le logiciel.
+4. **Déploiement** : Mettre en service le logiciel.
+
+---
+
+### 3. **Étape conception : MERSI ou UML ? Pourquoi ?**
+
+* **MERSI** est une méthode ancienne pour modéliser les bases de données (entités, relations).
+* **UML** (Unified Modeling Language) est un langage de modélisation plus complet, adapté à tous types de systèmes, pas seulement bases de données.
+* **Pourquoi UML ?**
+
+  * Plus universel
+  * Permet de modéliser la structure, le comportement, les interactions
+  * Utilisé aussi pour documenter et communiquer entre équipes
+
+---
+
+### 4. **Diagramme UML : Use Case - Classe**
+
+* **Diagramme de cas d’utilisation (Use Case)** : Montre **les interactions entre les utilisateurs (acteurs) et le système**.
+* **Diagramme de classes** : Montre la **structure des classes** du système, leurs attributs, méthodes, et relations.
+
+---
+
+### 5. **Rôle d’un diagramme de cas d’utilisation**
+
+* Identifier **qui utilise le système** (acteurs)
+* Montrer **les fonctions principales** offertes par le système (use cases)
+* Faciliter la communication avec les utilisateurs/non-techniques
+
+---
+
+### 6. **Éléments d’un diagramme de cas d’utilisation**
+
+* **Acteur** : Une entité externe qui interagit avec le système (personne, autre système).
+* **Use Case** : Une fonction ou un service que le système offre à un acteur.
+
+---
+
+### 7. **Formalismes**
+
+* **Acteur** : Dessiné comme un petit bonhomme bâton
+* **Use Case** : Dessiné comme une ellipse
+* **Système** : Encadré qui entoure les use cases
+
+---
+
+### 8. **Relations qui peuvent exister entre use cases et entre acteurs**
+
+* **Entre Use Cases :**
+
+  * **Include** : Un use case utilise obligatoirement un autre (ex: "Payer" inclut "Valider carte bancaire")
+  * **Extend** : Un use case peut étendre un autre en option (ex: "S’inscrire" peut être étendu par "S’inscrire avec Facebook")
+* **Entre Acteurs :**
+
+  * Généralisation (héritage) : un acteur peut être un sous-type d’un autre (ex: "Utilisateur Premium" hérite de "Utilisateur")
+
+---
+
+### 9. **Types acteurs (primaire et secondaire)**
+
+* **Acteur primaire** : Interagit directement avec le système pour obtenir un service (ex: Client dans un site e-commerce)
+* **Acteur secondaire** : Soutient le système, fournit un service ou une ressource (ex: Système de paiement tiers)
+
+---
+
+## Exemple concret résumé — site e-commerce :
+
+* **Acteurs :**
+
+  * Client (primaire)
+  * Administrateur (primaire)
+  * Système de paiement (secondaire)
+
+* **Use cases :**
+
+  * Passer commande
+  * Payer
+  * Gérer produits
+
+---
+
