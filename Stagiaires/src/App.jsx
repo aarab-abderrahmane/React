@@ -5,14 +5,15 @@ import Home from './component/Home'
 import ListStagiares from './component/ListStagiaires'
 import Error from './component/Error'
 import  useStagiaireActions from './component/functions'
+import EditStagiaire from './component/EditStagiaire'
 
-export const StagiaireContext = createContext({checkAll:false})
+export const StagiaireContext = createContext([])
 
 
 function App() {
 
-  const [statgiaires , setStagiaires] = useState([])
-  const [sCheckbox,setsCheckbox] = useState({checkALl:false})
+  const [stagiaires , setStagiaires] = useState([])
+  const [sCheckbox,setsCheckbox] = useState({checkAll:false})
   const [error,setError] = useState('')
   
   
@@ -23,8 +24,8 @@ function App() {
           try{
             
             const response = await fetch('/Data.json')
-            if(!response){
-              throw new Error('HTTP error! status : ',response.status) 
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`)
             }
             const result = await response.json()
             setStagiaires(result)
@@ -43,14 +44,14 @@ function App() {
 
 
   return (
-      <StagiaireContext.Provider  value={{statgiaires,setStagiaires,useStagiaireActions,sCheckbox,setsCheckbox,error}}>
+      <StagiaireContext.Provider  value={{stagiaires,setStagiaires,useStagiaireActions,sCheckbox,setsCheckbox,error}}>
                 <BrowserRouter>
             <Header />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path="/listStagiaires"  >
                   <Route  path="" element={<ListStagiares />} />
-                  {/* <Route path="/edit/:id" /> */}
+                  <Route path=":id" element={<EditStagiaire/>}   />
               </Route>
               <Route path="*" element={<Error/>} />
             </Routes>

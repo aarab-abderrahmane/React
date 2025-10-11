@@ -1,4 +1,4 @@
-import { useContext ,useEffect} from "react"
+import { useContext } from "react"
 import {StagiaireContext} from '../App'
 
 
@@ -8,10 +8,6 @@ export default function  useStagiaireActions(){
     const {statgiaires,setStagiaires,sCheckbox,setsCheckbox} = useContext(StagiaireContext)
 
 
-    function HandleEdit(id){
-
-        console.log("edit")
-    }
 
     function  HandleDelete(id){
 
@@ -49,7 +45,7 @@ export default function  useStagiaireActions(){
 
     
 
-    return  {HandleDelete,HandleEdit,HandleCheck,CheckALL,DeleteSelected}
+    return  {HandleDelete,HandleCheck,CheckALL,DeleteSelected}
 
 
 }

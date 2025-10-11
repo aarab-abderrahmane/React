@@ -5,17 +5,18 @@ import {Link} from 'react-router'
 
 export default function ListStagiares(){
 
-    const {statgiaires,useStagiaireActions,sCheckbox,setsCheckbox} = useContext(StagiaireContext)
+    const {stagiaires,useStagiaireActions,sCheckbox,setsCheckbox} = useContext(StagiaireContext)
     const { HandleEdit, HandleDelete,HandleCheck ,CheckALL,DeleteSelected} = useStagiaireActions();
 
     useEffect(() => {
-        if (statgiaires) {
-        let Checkboxs = Object.fromEntries(statgiaires.map(s => ([s.id,false])));
+        if (stagiaires) {
+        let Checkboxs = Object.fromEntries(stagiaires.map(s => ([s.id,false])));
         Checkboxs = {...Checkboxs,checkAll:false}
         setsCheckbox(Checkboxs);
         }
-    }, [statgiaires]);
+    }, [stagiaires]);
         
+    
 
     return (
 
@@ -158,7 +159,7 @@ export default function ListStagiares(){
             </thead>
 
             <tbody>
-            {statgiaires.map(({id, matricule, nom, codepostal,ville,moyenne}, i) => (
+            {stagiaires.map(({id, matricule, nom, codepostal,ville,moyenne}, i) => (
 
                 <tr
                 key={i}
@@ -194,7 +195,7 @@ export default function ListStagiares(){
                 <td className="px-6 py-4">{moyenne}</td>
                 <td className="px-6 py-4 flex gap-4 ">
                    
-                    <Link to={`/listStagiaires/edit/${id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    <Link to={`/listStagiaires/${id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >Edit
                     </Link>
 
