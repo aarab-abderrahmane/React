@@ -1,0 +1,52 @@
+[
+  {
+    "_id": "s1",
+    "nomsal": "Alami",
+    "prenomsal": "Sara",
+    "fonction": "Technicien",
+    "service": {
+      "codeser": "1",
+      "nomser": "Informatique"
+    }
+  },
+  {
+    "_id": "s2",
+    "nomsal": "Bennani",
+    "prenomsal": "Omar",
+    "fonction": "Ingénieur",
+    "service": {
+      "codeser": "2",
+      "nomser": "Réseaux"
+    }
+  },
+  {
+    "_id": "s3",
+    "nomsal": "Karim",
+    "prenomsal": "Leila",
+    "fonction": "Analyste",
+    "service": {
+      "codeser": "3",
+      "nomser": "Finance"
+    }
+  },
+  {
+    "_id": "s4",
+    "nomsal": "Hassan",
+    "prenomsal": "Youssef",
+    "fonction": "Administrateur",
+    "service": {
+      "codeser": "4",
+      "nomser": "RH"
+    }
+  },
+  {
+    "_id": "s5",
+    "nomsal": "Najah",
+    "prenomsal": "Fatima",
+    "fonction": "Chef de projet",
+    "service": {
+      "codeser": "5",
+      "nomser": "Marketing"
+    }
+  }
+]
