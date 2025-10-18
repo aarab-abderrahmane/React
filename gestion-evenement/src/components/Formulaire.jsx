@@ -17,10 +17,10 @@ export default function Formulaire(){
 
     return(
 
-        <div>
+        <div className="flex flex-col items-center ">
             <h1>Formulaire de l'événement</h1>
             <Styledform>
-            <form className="flex flex-col">
+            <form className="flex flex-col max-w-[600px]">
 
                 <label>Théme</label>
                 <input type="text" name="theme" onChange={handleChange}></input>
