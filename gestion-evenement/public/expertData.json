@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "nom_complet": "DUPONT Jean",
+    "événements": [
+      {
+        "thème": "Développement Web",
+        "date_debut": "2024-03-02",
+        "date_fin": "2024-03-15",
+        "description": "Introduction au développement web moderne",
+        "cout_journalier": 500,
+        "durée": 13
+      },
+      {
+        "thème": "Applications Mobiles",
+        "date_debut": "2024-04-01",
+        "date_fin": "2024-04-15",
+        "description": "Conception et développement d'applications mobiles",
+        "cout_journalier": 700,
+        "durée": 14
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nom_complet": "MARTIN Claire",
+    "événements": [
+      {
+        "thème": "Cybersécurité",
+        "date_debut": "2024-05-10",
+        "date_fin": "2024-05-20",
+        "description": "Principes fondamentaux de la cybersécurité et gestion des risques",
+        "cout_journalier": 800,
+        "durée": 10
+      },
+      {
+        "thème": "Cloud Computing",
+        "date_debut": "2024-06-01",
+        "date_fin": "2024-06-12",
+        "description": "Introduction aux services cloud et déploiement d’infrastructures",
+        "cout_journalier": 750,
+        "durée": 11
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nom_complet": "LEFEBVRE Antoine",
+    "événements": [
+      {
+        "thème": "Intelligence Artificielle",
+        "date_debut": "2024-07-05",
+        "date_fin": "2024-07-18",
+        "description": "Apprentissage automatique et mise en œuvre d’algorithmes IA",
+        "cout_journalier": 900,
+        "durée": 13
+      },
+      {
+        "thème": "Big Data",
+        "date_debut": "2024-08-01",
+        "date_fin": "2024-08-14",
+        "description": "Analyse de données massives et outils de traitement distribués",
+        "cout_journalier": 850,
+        "durée": 13
+      }
+    ]
+  }
+
+
+
+
+]
