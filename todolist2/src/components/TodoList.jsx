@@ -18,7 +18,7 @@ export default function TodoList(){
 
             
             {/* <!-- Input --> */}
-            <div className="bg-white/20 backdrop-blur-lg rounded-2xl p-4 shadow-lg flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
+            <div className="bg-white/20 backdrop-blur-lg rounded-2xl p-4 shadow-lg flex flex-col space-y-3">
             <input 
                 type="text" 
                 placeholder="Write here anything"
@@ -35,7 +35,7 @@ export default function TodoList(){
             </div>
 
             {/* <!-- Todo List --> */}
-            <div className="bg-white/20 backdrop-blur-lg rounded-3xl shadow-lg p-6  max-h-[80vh] overflow-y-scroll">
+            <div className="bg-white/20 backdrop-blur-lg rounded-3xl shadow-lg p-6  max-h-[60vh] 2xl:max-h-[80vh] overflow-y-scroll ">
             <h2 className="text-center text-xl font-semibold text-gray-900 mb-4">Todo List <i className="bi bi-card-checklist"></i></h2>
             
             <ul className="space-y-3">
