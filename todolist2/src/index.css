@@ -1,0 +1,43 @@
+body{
+
+    background-color: #c6c7dc;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+    height: 10px;
+
+
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+    border-radius: 100px;
+    max-height: 300px;
+
+    margin:20px
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a855f7;
+  border-radius: 20px;
+    max-height: 100px;
+
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
