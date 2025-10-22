@@ -6,7 +6,7 @@ const List = ({id,content,modeEdit,check,handleCheck,handleEdit,handleInputChang
     return (
 
 
-            <li class="glass  flex items-center  overflow-x-hidden rounded-xl px-4 py-2 group " style={{borderWidth:"2px",backgroundColor:"var(--color-secondary)"}} >
+            <li class="glass   flex items-center  overflow-x-hidden rounded-xl px-4 py-2 group " style={{borderWidth:"2px",backgroundColor:"var(--color-secondary)",boxShadow:"none"}} >
                 <input class={`w-[80%] font-medium text-[var(--color-text)] bg-transparent decoration-purple-500 decoration-2 ${check? "line-through" : ""}`} disabled={check || !modeEdit} value={content} onChange={(e)=>handleInputChange(e,id)}></input>
                 <div className="flex  items-center justify-end gap-5  w-[100px]">
                     <i class={`bi bi-pencil  text-lg lg:text-xl cursor-pointer  hidden ${check || modeEdit ? "" : "group-hover:block" }`} onClick={()=>handleEdit(id)}></i>
