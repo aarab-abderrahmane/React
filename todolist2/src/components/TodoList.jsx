@@ -40,12 +40,12 @@ export default function TodoList(){
             </div>
 
             {/* <!-- Todo List --> */}
-            <div className="glass relative  rounded-3xl shadow-lg    max-h-[50vh] md:max-h-[70vh]   ">
+            <div className="glass relative  rounded-3xl shadow-lg    max-h-[50vh] md:max-h-[70vh]  overflow-y-hidden ">
             <div className='mb-4 sticky top-0 z-20'>
             <h2 className="text-center text-xl lg:text-2xl font-bold text-[var(--color-text)]  py-4">Todo List <i class="bi bi-clipboard-minus"></i></h2>
             <div className='h-[3px] bg-white/50 rounded-full '></div>
             </div>
-            <div className='overflow-y-scroll overflow-x-hidden max-h-[calc(50vh-80px)] p-4 drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]' >
+            <div className='overflow-y-scroll overflow-x-hidden max-h-[calc(50vh-80px)] p-4 pb-8 drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]' >
             <ul className="space-y-3">
 
                     {todos?.map(td=><List id={td.id} content={td.content} modeEdit={td.modeEdit} check= {td.check} handleCheck={handleCheck} handleEdit={handleEdit} handleInputChange={handleInputChange} /> )}
