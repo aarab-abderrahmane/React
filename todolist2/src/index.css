@@ -1,3 +1,13 @@
+:root {
+  --color-primary: #645D7E;
+  --color-secondary: #e0e1f1;
+  --color-text: #645D7E;
+  --color-placeholder : #645D7E;
+  --color-button : #C6C7DC
+}
+
+
+
 body{
 
     background-color: #c6c7dc;
@@ -30,7 +40,7 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #a855f7;
+  background: #0000007e;
   border-radius: 20px;
     max-height: 100px;
 
@@ -39,5 +49,33 @@ body{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #000000b4;
+}
+
+
+.glass {
+  position: relative;
+  cursor: pointer;
+  /* border-radius: 9999px;          rounded-full */
+  padding-top: 0.75rem;           /* py-3 */
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;           /* px-6 */
+  padding-right: 1.5rem;
+  color: var(--color-text);                    /* text-white */
+  font-weight: 500;               /* font-medium */
+  /* max-width: 400px;               max-w-[180px] */
+  background-color: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);    /* backdrop-blur-lg */
+  border: 2px solid rgba(255, 255, 255, 0.362); /* border-[rgba(...)] */
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);   /* shadow-[...] */
+  transition-property: all;       /* transition-all */
+  transition-duration: 300ms;     /* duration-300 */
+  transition-timing-function: ease-in-out; /* ease-in-out */
+}
+
+.glass:hover {
+  transform: scale(1.05);         /* hover:scale-105 */
 }

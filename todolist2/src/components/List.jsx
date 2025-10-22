@@ -1,16 +1,17 @@
-
+import Checkbox from './Checkbox'
 
 const List = ({id,content,modeEdit,check,handleCheck,handleEdit,handleInputChange})=>{
+
 
     return (
 
 
-            <li class="flex items-center  bg-white/30 overflow-x-hidden rounded-xl px-4 py-2 group">
-                <input class={`w-[80%] font-medium text-gray-800 bg-transparent decoration-purple-500 decoration-2 ${check? "line-through" : ""}`} disabled={!modeEdit && !check} value={content} onChange={(e)=>handleInputChange(e,id)}></input>
+            <li class="glass  flex items-center  overflow-x-hidden rounded-xl px-4 py-2 group " style={{borderWidth:"2px",backgroundColor:"var(--color-secondary)"}} >
+                <input class={`w-[80%] font-medium text-[var(--color-text)] bg-transparent decoration-purple-500 decoration-2 ${check? "line-through" : ""}`} disabled={check || !modeEdit} value={content} onChange={(e)=>handleInputChange(e,id)}></input>
                 <div className="flex  items-center justify-end gap-5  w-[100px]">
-                    <i class={`bi bi-pencil  cursor-pointer  hidden ${check || modeEdit ? "" : "group-hover:block" }`} onClick={()=>handleEdit(id)}></i>
-                    <i class={`bi bi-check-circle-fill  cursor-pointer hidden text-green-500 text-xl ${check || !modeEdit ? "" : "group-hover:block"} `}  onClick={()=>handleEdit(id,false)}></i>
-                    <input type="checkbox" className={`w-5 h-5 accent-purple-500 ${modeEdit ? "hidden" :""}`}  value={id}  checked={check} onChange={handleCheck} />
+                    <i class={`bi bi-pencil  text-lg lg:text-xl cursor-pointer  hidden ${check || modeEdit ? "" : "group-hover:block" }`} onClick={()=>handleEdit(id)}></i>
+                    <i class={`bi bi-check-circle-fill  cursor-pointer hidden text-[var(--color-text)] text-xl lg:text-2xl ${check || !modeEdit ? "" : "group-hover:block"} `}  onClick={()=>handleEdit(id,false)}></i>
+                    {!modeEdit && <Checkbox   id={id}  check={check} handleCheck={handleCheck} modeEdit={modeEdit} />}
                 </div>
                 
             </li>

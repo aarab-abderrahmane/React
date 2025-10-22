@@ -14,30 +14,37 @@ export default function TodoList(){
     return (
 
         
-        <div className="w-full max-w-md p-4 space-y-6">
+        <div className=" w-[90vw] max-w-[600px] md:w-[70vw]   lg:w-[48vw]    p-4 space-y-6">
 
             
             {/* <!-- Input --> */}
-            <div className="bg-white/20 backdrop-blur-lg rounded-2xl p-4 shadow-lg flex flex-col space-y-3">
+            <div className="glass rounded-2xl  shadow-lg flex flex-col items-center space-y-3 ">
             <input 
                 type="text" 
                 placeholder="Write here anything"
-                className="flex-1 bg-transparent border border-white/40 text-gray-900 placeholder-gray-600 rounded-xl px-3 py-2 focus:outline-none focus:border-purple-400"
+                className=" flex-1 bg-[var(--color-secondary)] text-[var(--color-placeholder)] w-[90%] placeholder-gray-600 rounded-xl px-6 py-4 focus:outline-none focus:border-purple-400"
                 value={list_content}
                 onChange={(e)=>setListContent(e.target.value)}
+                
            />
 
             <button
-            onClick={()=>handleAdd(list_content)}
-            className="px-5 py-2 rounded-xl bg-purple-500 text-white font-medium hover:bg-purple-600 transition">
+            onClick={()=>{
+                setListContent('')
+                handleAdd(list_content)
+            }}
+            className="glass rounded-full transition w-[70%]" style={{backgroundColor:"var(--color-button)"}}>
                 Add to list
+                <i class="bi bi-caret-right-fill ms-2"></i>
             </button>
             </div>
 
             {/* <!-- Todo List --> */}
-            <div className="bg-white/20 backdrop-blur-lg rounded-3xl shadow-lg p-6  max-h-[60vh] 2xl:max-h-[80vh] overflow-y-scroll ">
-            <h2 className="text-center text-xl font-semibold text-gray-900 mb-4">Todo List <i className="bi bi-card-checklist"></i></h2>
-            
+            <div className="glass  rounded-3xl shadow-lg p-6   max-h-[50vh] md:max-h-[70vh] overflow-y-scroll  ">
+            <div className='mb-4'>
+            <h2 className="text-center text-xl lg:text-2xl font-bold text-[var(--color-text)]  py-4">Todo List <i class="bi bi-clipboard-minus"></i></h2>
+            <div className='h-[3px] bg-white/50 rounded-full '></div>
+            </div>
             <ul className="space-y-3">
 
                     {todos?.map(td=><List id={td.id} content={td.content} modeEdit={td.modeEdit} check= {td.check} handleCheck={handleCheck} handleEdit={handleEdit} handleInputChange={handleInputChange} /> )}
