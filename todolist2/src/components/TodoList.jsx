@@ -1,15 +1,58 @@
 import List from './List'
 import {todosContext} from '../App'
 import {useContext,useState} from "react"
+import { SparklesText } from "./ui/sparkles-text"
+
+import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from "lucide-react"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "./ui/alert"
+
 
 
 export default function TodoList(){
 
-    const {todos,handleAdd,handleCheck,handleEdit,handleInputChange} = useContext(todosContext)
+    const {todos,handleAdd,handleCheck,handleEdit,handleSave,UpdateContent} = useContext(todosContext)
 
     const [list_content,setListContent] = useState("")
 
+    const [activeSparkles , setActiveSparkles] = useState(false)
+
     console.log(todos)
+
+    const Typing = (e)=>{
+
+        setListContent(e.target.value)
+        e.target.value.length > 4 ? setActiveSparkles(true) : setActiveSparkles(false)
+
+    }
+
+    const ListTodos = ()=>  {
+            if(todos && todos.length>0){
+                  return   todos.map(td=><List id={td.id} content={td.content} modeEdit={td.modeEdit} check= {td.check} handleCheck={handleCheck} handleEdit={handleEdit} handleSave={handleSave} UpdateContent={UpdateContent} /> )
+            }else{
+                return  (
+                    <Alert variant="default" >
+                        <AlertCircleIcon />
+                        <AlertTitle>No tasks found.</AlertTitle>
+                        <AlertDescription >
+                        <p className='pe-[10vw]'>Please note the following :</p>
+                       <ul className="list-disc list-inside mt-2 text-sm">
+                        <li>The task list is empty.</li>
+                        <li>You can add new tasks using the 'Add to list' button.</li>
+                        <li>Tasks can be deleted by clicking on the task; it will be removed immediately.</li>
+                        <li>Edit tasks by clicking the edit icon after hovering over the task, then save changes.</li>
+                        <li>Tasks are stored in your browser's local storage; clearing storage will remove them.</li>
+                        </ul>
+
+                        </AlertDescription>
+                    </Alert>
+                )
+                
+            }
+      }
 
     return (
 
@@ -24,17 +67,19 @@ export default function TodoList(){
                 placeholder="Write here anything"
                 className=" flex-1 bg-[var(--color-secondary)] text-[var(--color-placeholder)] w-[90%] placeholder-gray-600 rounded-xl px-6 py-4 focus:outline-none focus:border-purple-400"
                 value={list_content}
-                onChange={(e)=>setListContent(e.target.value)}
+                onChange={Typing}
                 
            />
 
             <button
             onClick={()=>{
                 setListContent('')
+                setActiveSparkles(false)
                 handleAdd(list_content)
             }}
-            className="glass rounded-full transition w-[70%]  drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]" style={{backgroundColor:"var(--color-button)"}}>
-                Add to list
+            className="glass rounded-full transition w-[70%] flex justify-center items-center  drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]" style={{backgroundColor:"var(--color-button)"}}>
+
+                {activeSparkles ? <SparklesText >Add to list</SparklesText> : <h1 className='text-lg font-normal '>Add to list</h1> }
                 <i class="bi bi-caret-right-fill ms-2"></i>
             </button>
             </div>
@@ -48,7 +93,7 @@ export default function TodoList(){
             <div className='overflow-y-scroll overflow-x-hidden max-h-[calc(50vh-80px)] p-4 pb-8 drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]' >
             <ul className="space-y-3">
 
-                    {todos?.map(td=><List id={td.id} content={td.content} modeEdit={td.modeEdit} check= {td.check} handleCheck={handleCheck} handleEdit={handleEdit} handleInputChange={handleInputChange} /> )}
+                <ListTodos/>
                    
             </ul>
             </div>
