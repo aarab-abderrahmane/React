@@ -190,6 +190,7 @@ body{
 
 * {
   cursor: none !important;
+  box-sizing: border-box;
 }
 
 input,
@@ -197,3 +198,4 @@ textarea,
 select {
   cursor: text !important;
 }
+
