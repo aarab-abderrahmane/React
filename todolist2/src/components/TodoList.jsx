@@ -14,7 +14,7 @@ import {
 
 export default function TodoList(){
 
-    const {todos,handleAdd,handleCheck,handleEdit,handleSave,UpdateContent} = useContext(todosContext)
+    const {todos,handleAdd} = useContext(todosContext)
 
     const [list_content,setListContent] = useState("")
 
@@ -57,7 +57,7 @@ export default function TodoList(){
     return (
 
         
-        <div className="grid grid-rows-[auto,1fr] gap-6 max-w-[500px] w-full ml-auto">
+        <div className="flex flex-col gap-6  w-[90vw]  md:w-[50vw]    max-w-[550px] h-[90vh]  max-h-[900px]" >
 
             
             {/* <!-- Input --> */}
@@ -85,7 +85,7 @@ export default function TodoList(){
             </div>
 
             {/* <!-- Todo List --> */}
-            <div className="glass relative  rounded-3xl shadow-lg    max-h-[50vh] md:max-h-[70vh]  overflow-y-hidden ">
+            <div className="glass relative flex-1  rounded-3xl shadow-lg    max-h-[50vh] md:max-h-[80vh]  overflow-y-hidden ">
             <div className='mb-4 sticky top-0 z-20'>
             <h2 className="text-center text-xl lg:text-2xl font-bold text-[var(--color-text)]  py-4">Todo List <i class="bi bi-clipboard-minus"></i></h2>
             <div className='h-[3px] bg-white/50 rounded-full '></div>

@@ -12,14 +12,17 @@ import {
 } from "./components/ui/dropdown-menu"
 import { Button } from "./components/ui/button"
 import { MoreHorizontalIcon } from "lucide-react"
-import { Calendar } from "./components/ui/calendar"
+import LiveClock from "./components/LiveClock"
+import { Calendar } from "./components/ui/calendar";
+import LiveClockDetailed from './components/LiveClockDetailed'
+
 
 export const todosContext = createContext()
 
 function App() {
-  const [date, setDate] = React.useState(new Date());
 
-
+  const [calendarDate,setCalendarDate] = useState(new Date())
+  
   const [todos,setTodos] = useState(()=>{
 
       const saved = localStorage.getItem('todos')
@@ -114,14 +117,14 @@ function App() {
     <SmoothCursor  />
         <todosContext.Provider  value={{todos,handleAdd,handleCheck,handleEdit,handleSave,UpdateContent}}>
 
-          
+{/*           
             <div className="absolute z[-999] flex flex-col hidden xl:block text-[var(--color-text)]">
               <h1 className="text-[21vw]   h-[50vh]" style={{fontWeight: "700",fontStyle: "normal",marginTop:"-20vh"}}>Tuesday</h1>
               <h1 className="text-[21vw]  h-[50vh]" style={{fontWeight: "700",fontStyle: "normal"}}>Midnight</h1>
             </div>
+               */}
               
-              
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,500px)] gap-6 p-4 lg:p-8 min-h-screen overflow-y-scroll">
+              <div className="flex flex-col items-center xl:flex-row xl:justify-center w-[100vw]  gap-4 p-4 lg:p-8 min-h-screen overflow-y-scroll overflow-x-hidden  ">
 
 
                   <div className="fixed top-4 right-4 z-[200]">
@@ -150,33 +153,30 @@ function App() {
                   </div>
 
                   {/* <!-- Left section --> */}
-                    <div className="grid grid-rows-2 gap-6 z-10 w-full ">
+                    <div className="flex flex-col gap-6 z-10   max-w-[1000px] w-[90vw] xl:w-[50vw]  ">
 
                     {/* <!-- Calendar --> */}
+                    <div
+                    class="glass   rounded-xl shadow  flex flex-col md:flex-row items-center md:items-stretch lg:justify-between   w-full lg:h-[50vh] lg:max-h-[500px] "
+                    style={{ padding: "2px", borderRadius: "1rem" }}
+                    >
 
-                    <div class="glass  w-full  rounded-xl shadow  flex justify-between " style={{padding:"2px",borderRadius:"1rem"}} >
-                          <div className="flex flex-col backdrop-blur-[20px] bg-white/30 rounded-2xl  bg-[var(--color-secondary)] w-[40%]">
-                              <div className="flex justify-between p-4 font-bold text-xl">
-                                <h1>August</h1>
-                                <h1>2024</h1>
-                              </div>
-                              <hr></hr>
-                              <div className="w-full flex flex-1 flex-col justify-between items-center">
-                                <h1 className="text-[10vw] font-bold">25</h1>
-                                <h1 className="mb-4 font-bold">Wednesday</h1>
-                              </div>
-                          </div>
+                      <LiveClock/>
 
-                          <Calendar
+
+                      <Calendar
                           mode="single"
-                          selected={date}
-                          onSelect={setDate}
+                          selected={calendarDate}
+                          onSelect={setCalendarDate}
                           className="rounded-md  shadow-sm   w-[55%] m-5 max-h-[40vh]  overflow-y-scroll "
                           captionLayout="dropdown"
-                        />
+                      />
                     </div>
+                    
+                    
                     {/* <!-- Clock --> */}
-                    <div class="glass w-full h-50 bg-[var(--color-secondary)] rounded-xl shadow"></div>
+                    <LiveClockDetailed />
+
                   </div>
 
                 
