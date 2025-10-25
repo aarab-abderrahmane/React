@@ -1,6 +1,6 @@
 import Checkbox from './Checkbox'
 import {  useState ,useContext} from 'react'
-import {todosContext} from '../App'
+import {todosContext} from './TodoList'
 
 
 

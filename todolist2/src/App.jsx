@@ -1,5 +1,5 @@
-import TodoList  from "./components/TodoList"
-import {useState,createContext,useEffect} from 'react'
+import {TodoList}  from "./components/TodoList"
+import {useState} from 'react'
 import * as React from "react"
 import { SmoothCursor } from "./components/ui/smooth-cursor"
 import {
@@ -17,105 +17,21 @@ import { Calendar } from "./components/ui/calendar";
 import LiveClockDetailed from './components/LiveClockDetailed'
 
 
-export const todosContext = createContext()
 
 function App() {
 
   const [calendarDate,setCalendarDate] = useState(new Date())
-  
-  const [todos,setTodos] = useState(()=>{
 
-      const saved = localStorage.getItem('todos')
-      return (saved  || saved=="null")? JSON.parse(saved) 
-                  : [
-                    {id:0,content:"example todo1",modeEdit:false ,check:true},
-                    {id:1,content:"example todo2",modeEdit:false ,check:false}
-                  ]
-
-  } )
-
-  useEffect(()=>{
-        localStorage.setItem('todos',JSON.stringify(todos))
-
-  },[todos])
-
-  const handleAdd = (list_content)=>{
-    if(list_content.length > 4){
-          setTodos([...todos,{id:todos.length++,content:list_content,modeEdit:false,check:false}])
-    }
+  function resetStorage() {
+    localStorage.clear();
+    localStorage.setItem("todos", JSON.stringify([]));
+    window.location.reload();
   }
 
-  const handleCheck = (e)=>setTodos(
-    todos.map(td=>{
-
-          if(td.id === Number(e.target.value)){
-            return {...td , check : e.target.checked,modeEdit:false}
-          }
-
-          return td 
-
-    })
-  )
-
-  const handleEdit = (list_id)=>setTodos(todos.map(td=>td.id===list_id ? {...td,modeEdit:true} : td))
-
-  const UpdateContent = (e,list_id)=> setTodos(todos.map(td=>{
-      console.log(e.target.value)
-    if(td.id===list_id){
-
-          if(typeof td.oldcontent === "undefined"){
-
-            return {...td,oldcontent:td.content,content:e.target.value}
-
-          }
-            return {...td,content:e.target.value}
-          
-
-
-    } 
-
-    return td 
-
-  
-  }))
-
-  const handleSave = (id,newValue)=>{
-    console.log(newValue)
-    return  setTodos(todos.map(td=>{
-
-            if(td.id===id){
-
-                let content  = td.content
-                if(newValue.length>4){
-                  content=newValue
-                  
-                }
-                return {id:td.id,content:content, modeEdit:false,check:false}
-                
-
-            }
-
-            return td
-
-
-      }))
-
-  }
-
-
-  function resetStorage(){
-
-      localStorage.clear()
-      localStorage.setItem("todos", JSON.stringify([]));
-      window.location.reload();
-  }
-
-  
   return (
     <>
 
     <SmoothCursor  />
-        <todosContext.Provider  value={{todos,handleAdd,handleCheck,handleEdit,handleSave,UpdateContent}}>
 
           
             <div className="absolute z[-999] flex flex-col jutify-center hidden xl:block text-[var(--color-text)]  overflow-hidden">
@@ -190,7 +106,6 @@ function App() {
     
 
 
-        </todosContext.Provider>
     </>
   )
 }
