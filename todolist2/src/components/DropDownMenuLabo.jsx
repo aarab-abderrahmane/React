@@ -110,7 +110,7 @@ export default function DropdownMenuLabo() {
             </DialogHeader>
 
             <div>
-                <div className="p-10 mx-h-[10px] overflow-scroll">
+                <div >
                 <CodeBlockDemo code={Code} language="json"  />
                 </div>
             </div>
@@ -118,7 +118,7 @@ export default function DropdownMenuLabo() {
 
 
 
-            <DialogFooter>
+            <DialogFooter className=" w-full flex flex-col md:flex-row">
               <DialogClose asChild>
                 <Button variant="danger">Cancel</Button>
               </DialogClose>

@@ -12,7 +12,7 @@ function CodeBlockDemo({ code, language }) {
   return (
     <CodeBlock code={code} language={language}>
       <div className="relative">
-        <CodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg max-h-[300px] w-full overflow-y-scroll">
+        <CodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg max-h-[300px]  w-full overflow-y-scroll">
           <div className="table-row">
             <CodeBlock.LineNumber className="table-cell pr-4 text-sm text-gray-500 text-right select-none" />
             <CodeBlock.LineContent className="table-cell">
@@ -22,7 +22,7 @@ function CodeBlockDemo({ code, language }) {
         </CodeBlock.Code>
 
         <button
-          className="bg-white rounded-xl px-3.5 py-2 me-6 absolute top-2 right-2 text-sm font-semibold"
+          className="bg-white rounded-xl px-3.5 py-2 me-2 absolute top-2 right-2 text-sm font-semibold"
           onClick={copyCode}
         >
           {state.value ? 'Copied!' : 'Copy code'}

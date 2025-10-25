@@ -77,41 +77,36 @@ export  function TodoList() {
       todos.map((td) => (td.id === list_id ? { ...td, modeEdit: true } : td))
     );
 
-  const UpdateContent = (e, list_id) =>
-    setTodos(
-      todos.map((td) => {
-        console.log(e.target.value);
-        if (td.id === list_id) {
-          if (typeof td.oldcontent === "undefined") {
-            return { ...td, oldcontent: td.content, content: e.target.value };
-          }
-          return { ...td, content: e.target.value };
-        }
+  // const UpdateContent = (e, list_id) =>
+  //   setTodos(
+  //     todos.map((td) => {
+  //       console.log(e.target.value);
+  //       if (td.id === list_id) {
+  //         if (typeof td.oldcontent === "undefined") {
+  //           return { ...td, oldcontent: td.content, content: e.target.value };
+  //         }
+  //         return { ...td, content: e.target.value };
+  //       }
 
-        return td;
-      })
-    );
+  //       return td;
+  //     })
+  //   );
 
   const handleSave = (id, newValue) => {
     console.log(newValue);
-    return setTodos(
+     setTodos(
       todos.map((td) => {
         if (td.id === id) {
-          let content = td.content;
-          if (newValue.length > 4) {
-            content = newValue;
+          if (newValue.trim().length > 4) {
+              return { ...td, content: newValue, modeEdit: false};
           }
-          return { id: td.id, content: content, modeEdit: false, check: false };
+          return { ...td, modeEdit: false};
         }
 
         return td;
       })
     );
   };
-      console.log(todos)
-
-
-
 
     const ListTodos = useMemo(() => {
 
@@ -178,7 +173,7 @@ export  function TodoList() {
 
 
   return (
-    <todosContext.Provider  value={{todos,handleAdd,handleCheck,handleEdit,handleSave,UpdateContent}}>
+    <todosContext.Provider  value={{todos,handleAdd,handleCheck,handleEdit,handleSave}}>
 
     <div className="flex flex-col gap-6  w-[90vw]  md:w-[50vw]    max-w-[550px] h-[90vh]  max-h-[850px]">
       {/* <!-- Input --> */}
