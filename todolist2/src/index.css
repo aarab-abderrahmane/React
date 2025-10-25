@@ -109,9 +109,8 @@ body{
   transition-timing-function: ease-in-out; /* ease-in-out */
 }
 
-.glass:hover {
-  transform: scale(1.04);         /* hover:scale-105 */
-}
+
+  
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

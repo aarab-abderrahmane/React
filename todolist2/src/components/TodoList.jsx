@@ -149,7 +149,7 @@ export  function TodoList() {
 
     <div className="flex flex-col gap-6  w-[90vw]  md:w-[50vw]    max-w-[550px] h-[90vh]  max-h-[850px]">
       {/* <!-- Input --> */}
-      <div className="glass rounded-2xl  shadow-lg flex flex-col items-center space-y-3 ">
+      <div className="glass rounded-2xl  shadow-lg flex flex-col items-center space-y-3 md:hover:scale-[1.04]">
         <input
           type="text"
           placeholder="Write here anything"
@@ -164,7 +164,7 @@ export  function TodoList() {
             setActiveSparkles(false);
             handleAdd(inputContent);
           }}
-          className="glass rounded-full transition w-[70%] flex justify-center items-center  drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]"
+          className="glass rounded-full transition w-[70%] flex justify-center items-center  drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)] active:scale-[0.95]  "
           style={{ backgroundColor: "var(--color-button)" }}
         >
           {activeSparkles ? (
@@ -177,7 +177,7 @@ export  function TodoList() {
       </div>
 
       {/* <!-- Todo List --> */}
-      <div className="glass relative flex-1  rounded-3xl shadow-lg    max-h-[50vh] md:max-h-[80vh]  overflow-y-hidden ">
+      <div className="glass relative flex-1  rounded-3xl shadow-lg    max-h-[50vh] md:max-h-[80vh]  overflow-y-hidden md:hover:scale-[1.04] ">
         <div className="mb-4 sticky top-0 z-20">
           <h2 className="text-center text-xl lg:text-2xl font-bold text-[var(--color-text)]  py-4">
             Todo List <i class="bi bi-clipboard-minus"></i>
