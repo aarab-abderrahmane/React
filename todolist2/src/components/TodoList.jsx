@@ -10,6 +10,10 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "./ui/context-menu"
+import DropdownMenuLabo from "./DropDownMenuLabo"
+
+
+
 
 export const todosContext = createContext()
 
@@ -225,6 +229,12 @@ export  function TodoList() {
       </div>
     </div>
 
+
+                  <div className="fixed top-4 right-4 z-[50] m-2 ">
+
+                      <DropdownMenuLabo/>
+                
+                  </div>
     </todosContext.Provider>
 
   );
