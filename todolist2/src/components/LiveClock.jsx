@@ -20,16 +20,16 @@ function LiveClock() {
 
     return (
 
-        <div className="flex flex-col backdrop-blur-[20px] bg-white/40 rounded-2xl  bg-[var(--color-secondary)] w-full md:w-[50%]">
+        <div className="flex flex-col backdrop-blur-[20px] bg-white/40 rounded-2xl  bg-[var(--color-secondary)] w-full md:w-[50%] overflow-y-hidden">
             <div className="flex justify-between p-4 font-bold text-xl">
             <h1>{month}</h1>
             <h1>{year}</h1>
             </div>
             <hr></hr>
-            <div className="w-full flex flex-1  justify-center items-center">
-            <h1 className="text-[8rem] 2xl:text-[15rem] font-bold">{day}</h1>
+            <div className="w-full flex  flex-1  justify-center items-center">
+            <h1 className="text-[8rem]  md:text-[9rem] 2xl:text-[12rem] font-bold">{day}</h1>
             </div>
-            <h1 className="w-full text-center py-3 font-bold">{weekday}</h1>
+            <h1 className="w-full   flex items-center justify-center   h-[15%] font-bold text-[1.2rem] xl:text-[1.5rem] ">{weekday}</h1>
 
         </div>
 

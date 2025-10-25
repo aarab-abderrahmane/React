@@ -57,7 +57,7 @@ export default function TodoList(){
     return (
 
         
-        <div className="flex flex-col gap-6  w-[90vw]  md:w-[50vw]    max-w-[550px] h-[90vh]  max-h-[900px]" >
+        <div className="flex flex-col gap-6  w-[90vw]  md:w-[50vw]    max-w-[550px] h-[90vh]  max-h-[850px]" >
 
             
             {/* <!-- Input --> */}

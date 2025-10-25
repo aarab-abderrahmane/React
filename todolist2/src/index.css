@@ -107,7 +107,7 @@ body{
 }
 
 .glass:hover {
-  transform: scale(1.05);         /* hover:scale-105 */
+  transform: scale(1.04);         /* hover:scale-105 */
 }
 
 @theme inline {
@@ -195,6 +195,8 @@ body{
 #root,body{
   width: 100vw;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 input,
@@ -202,4 +204,3 @@ textarea,
 select {
   cursor: text !important;
 }
-
