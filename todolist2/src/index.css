@@ -109,6 +109,12 @@ body{
   transition-timing-function: ease-in-out; /* ease-in-out */
 }
 
+.context-menu{
+
+  padding: 0 !important;
+  
+}
+
 
   
 

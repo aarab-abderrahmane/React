@@ -4,6 +4,12 @@ import { SparklesText } from "./ui/sparkles-text";
 
 import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "./ui/context-menu"
 
 export const todosContext = createContext()
 
@@ -16,7 +22,7 @@ export  function TodoList() {
 
   const Typing = (e) => {
     setInputContent(e.target.value);
-    e.target.value.length > 4
+    e.target.value.trim().length > 4
       ? setActiveSparkles(true)
       : setActiveSparkles(false);
   };
@@ -38,7 +44,7 @@ export  function TodoList() {
   }, [todos]);
 
   const handleAdd = (inputContent) => {
-    if (inputContent.length > 4) {
+    if (inputContent.trim().length > 4) {
       setTodos([
         ...todos,
         {
@@ -98,18 +104,34 @@ export  function TodoList() {
       })
     );
   };
+      console.log(todos)
+
+
 
 
     const ListTodos = useMemo(() => {
 
     if (todos && todos.length > 0) {
       return todos.map((td) => (
-        <List
+
+
+
+          <ContextMenu key={td.id}>
+          <ContextMenuTrigger>
+
+                    <List
           id={td.id}
           content={td.content}
           modeEdit={td.modeEdit}
           check={td.check}
         />
+          </ContextMenuTrigger>
+            <ContextMenuContent>
+              <ContextMenuItem>Profile</ContextMenuItem>
+              <ContextMenuItem  className="text-red-500 font-bold " onSelect={()=>hanldeDelete(td.id)} >Delete</ContextMenuItem>
+            </ContextMenuContent>
+          </ContextMenu>
+
       ));
     } else {
 
@@ -140,6 +162,13 @@ export  function TodoList() {
       );
     }
   },[todos]);
+
+
+  const hanldeDelete = (id)=>{
+
+      setTodos(todos.filter(td=>td.id!== id))
+
+  }
 
 
 
@@ -185,8 +214,12 @@ export  function TodoList() {
           <div className="h-[3px] bg-white/50 rounded-full "></div>
         </div>
         <div className="overflow-y-scroll overflow-x-hidden max-h-[calc(50vh-10px)] p-4 pb-8 drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)]">
-          <ul className="space-y-3">
+          <ul className=" flex flex-col gap-2">
+
             {ListTodos}
+
+
+
           </ul>
         </div>
       </div>
