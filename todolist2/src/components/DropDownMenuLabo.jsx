@@ -24,11 +24,13 @@ import { useState, useContext } from "react"; // Add useContext
 import { todosContext } from "./TodoList"; // Import the context
 
 import CodeBlockDemo from "./CodeBlockDemo";
-import {AlertConfrim} from './AlertConfirm'
+import {AlertConfrim} from './AlertConfirm';
+import {Preferences} from './Preferences'
 
 
 export default function DropdownMenuLabo() {
   
+  const[showPreferences , setShowPreferences] = useState(false)
   const [showConfirm , setshowConfirm] = useState(false)
 
   function resetStorage() {
@@ -106,16 +108,23 @@ export default function DropdownMenuLabo() {
             <DropdownMenuItem className="p-3" disabled={todos.length>0 ? false : true} onSelect={()=>setOpenDialog(true)}>
               Export
             </DropdownMenuItem>
+            <DropdownMenuSeparator  className='font-bold h-[1px] bg-[var(--color-text)]' />
+            <DropdownMenuItem className="p-3" onSelect={()=>setShowPreferences(true)}>
+              Preferences
+            </DropdownMenuItem>
 
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
 
+
+      <Preferences showPreferences={showPreferences} setShowPreferences={setShowPreferences}/>
+
       <AlertConfrim showConfirm={showConfirm} setshowConfirm={setshowConfirm} confirmDelete={resetStorage}  />
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog} >
         <form>
-          <DialogContent className="max-w-[80vw]  md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px] flex flex-col overflow-x-hidden">
+          <DialogContent className=" backdrop-blur-md border-2 bg-white/60 rounded-3xl max-w-[80vw]  md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px] flex flex-col overflow-x-hidden">
             <DialogHeader>
               <DialogTitle>Export Data</DialogTitle>
               <DialogDescription>
@@ -143,6 +152,8 @@ export default function DropdownMenuLabo() {
           </DialogContent>
         </form>
       </Dialog>
+
+
     </>
   );
 }
