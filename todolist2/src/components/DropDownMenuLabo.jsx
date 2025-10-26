@@ -34,7 +34,6 @@ export default function DropdownMenuLabo() {
   const [showConfirm , setshowConfirm] = useState(false)
 
   function resetStorage() {
-    localStorage.clear();
     localStorage.setItem("todos", JSON.stringify([]));
     window.location.reload();
   }

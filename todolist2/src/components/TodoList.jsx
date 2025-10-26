@@ -11,7 +11,7 @@ import {
   ContextMenuTrigger,
 } from "./ui/context-menu"
 import DropdownMenuLabo from "./DropDownMenuLabo"
-
+import { toast } from "sonner"
 
 
 
@@ -77,6 +77,8 @@ export  function TodoList() {
           check: false,
         },
       ]);
+
+      toast.success("Event has been created")
     }
   };
 

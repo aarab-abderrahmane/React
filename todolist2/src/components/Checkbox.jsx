@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Checkbox = ({id,check,handleCheck,modeEdit}) => {
+const Checkbox = ({id,check,handleCheck}) => {
    const inputId = `cbtest-19-${id}`; // unique per list item
   return (
     <StyledWrapper>
-      <div className={`checkbox-wrapper-19 `}>
+      <div className={`checkbox-wrapper-19 mt-1 `}>
         <input
           id={inputId}
           type="checkbox"

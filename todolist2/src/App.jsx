@@ -5,9 +5,12 @@ import { SmoothCursor } from "./components/ui/smooth-cursor"
 import LiveClock from "./components/LiveClock"
 import { Calendar } from "./components/ui/calendar";
 import LiveClockDetailed from './components/LiveClockDetailed'
+import { ToastContext } from "./ToastContext"
+import { Toaster } from "./components/ui/sonner"
 
 
 function App() {
+
 
   const [calendarDate,setCalendarDate] = useState(new Date())
 
@@ -15,16 +18,15 @@ function App() {
     <>
 
     <SmoothCursor  />
-
+      <ToastContext.Provider>
           
             <div className="absolute z[-999] flex flex-col jutify-center hidden xl:block text-[var(--color-text)]  overflow-hidden">
               <h1 className="text-[21vw] align-baseline inline-block  h-[50vh]  text-center w-full mt-[-70px]" style={{fontWeight: "700",fontStyle: "normal"}}>Tuesday</h1>
               <h1 className="text-[21vw] align-baseline inline-block h-[50vh] text-center w-full" style={{fontWeight: "700",fontStyle: "normal"}}>Midnight</h1>
             </div>
-              
-              
-              <div className="flex flex-col items-center mt-12 md:mt-0 xl:flex-row xl:justify-center w-[100vw]  gap-4 p-4 lg:p-8 min-h-screen overflow-y-scroll overflow-x-hidden  ">
+            
 
+              <div className="flex flex-col items-center mt-12 md:mt-0 xl:flex-row xl:justify-center w-[100vw]  gap-4 p-4 lg:p-8 min-h-screen overflow-y-scroll overflow-x-hidden  ">
 
 
 
@@ -63,9 +65,12 @@ function App() {
 
             </div>
 
-    
+            <Toaster />
+              
+      </ToastContext.Provider>
 
 
+   
     </>
   )
 }

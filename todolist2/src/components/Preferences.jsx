@@ -21,10 +21,9 @@ import {
 } from "./ui/accordion"
 
 import {useState, useContext} from "react"
-
-
 import {todosContext} from './TodoList'
-
+import {Trash2Icon} from './ui/icons/Trash2Icon'
+import { CodeXmlIcon  } from './ui/icons/CodeXmlIcon'
 
 export function Preferences({showPreferences,setShowPreferences}) {
 
@@ -78,8 +77,8 @@ export function Preferences({showPreferences,setShowPreferences}) {
                 <div className=" bg-white/50 h-[55px] max-w-[400px] w-[80%] rounded-xl flex items-center justify-between px-4 border border-black">
                     <p >Todo List</p>
                     <div className="flex justify-end flex-1 h-full pe-4  ">
-                        <i class={`bi bi-trash3 text-lg lg:text-xl border-l border-black w-[50px] p-2 flex items-center  justify-center ${LocalData.buttonDelete.active ? LocalData.buttonDelete.color : "bg-transparent"}`} onClick={()=>toggleButton('buttonDelete')}></i>
-                        <i class={`bi bi-pencil text-lg lg:text-xl border-l border-r border-black w-[50px]  p-2 flex items-center justify-center  ${LocalData.buttonEdit.active ? LocalData.buttonEdit.color : "bg-transparent"} `} onClick={()=>toggleButton('buttonEdit')}></i>
+                        < Trash2Icon  size={25} duration={0.5}  class={` border-l border-black w-[50px] p-2 flex items-center  justify-center ${LocalData.buttonDelete.active ? LocalData.buttonDelete.color : "bg-transparent"}`} onClick={()=>toggleButton('buttonDelete')} />    
+                        < CodeXmlIcon  size={25} duration={0.5}  class={` border-l border-r border-black w-[50px] p-2 flex items-center  justify-center ${LocalData.buttonEdit.active ? LocalData.buttonEdit.color : "bg-transparent"}`} onClick={()=>toggleButton('buttonEdit')} />    
                     </div>
                     <div className="w-[25px] h-[25px] border-2 border-black rounded-md"></div>
                 </div>
