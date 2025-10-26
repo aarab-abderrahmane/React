@@ -61,7 +61,6 @@ function DialogContent({
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 " +
         "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[90vw] " +
         "translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 " +
-        "max-w-[80vw]  md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px] flex flex-col overflow-x-hidden",
         className
       )}
 

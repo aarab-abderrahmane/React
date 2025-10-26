@@ -5,6 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuSeparator
 } from "./ui/dropdown-menu";
 import {
   Dialog,
@@ -23,9 +24,20 @@ import { useState, useContext } from "react"; // Add useContext
 import { todosContext } from "./TodoList"; // Import the context
 
 import CodeBlockDemo from "./CodeBlockDemo";
+import {AlertConfrim} from './AlertConfirm'
+
 
 export default function DropdownMenuLabo() {
   
+  const [showConfirm , setshowConfirm] = useState(false)
+
+  function resetStorage() {
+    localStorage.clear();
+    localStorage.setItem("todos", JSON.stringify([]));
+    window.location.reload();
+  }
+
+
   const { todos } = useContext(todosContext);
   
 
@@ -72,36 +84,38 @@ export default function DropdownMenuLabo() {
 
   const [openDialog, setOpenDialog] = useState(false);
 
-  function resetStorage() {
-    localStorage.clear();
-    localStorage.setItem("todos", JSON.stringify([]));
-    window.location.reload();
-  }
+
 
   return (
     <>
-      <DropdownMenu modal={false}>
+      <DropdownMenu modal={false} >
         <DropdownMenuTrigger asChild>
           <Button variant="default" aria-label="Open menu" size="icon-lg ">
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-40 " align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuGroup>
-            <DropdownMenuItem className="text-red-500" onSelect={resetStorage}>
+        <DropdownMenuContent className="w-[80vw] lg:w-[50vw] max-w-[300px] rounded-xl border-2 border-[var(--color-text)]  " align="end" >
+          <DropdownMenuLabel className="p-3 bg-[var(--color-primary)] text-white" >Actions</DropdownMenuLabel>
+          <DropdownMenuGroup className="">
+            <DropdownMenuSeparator className='h-[2px] bg-[var(--color-text)]'/>
+
+            <DropdownMenuItem className="text-red-500 p-3 font-bold focus:bg-red-200  " onSelect={()=>setshowConfirm(true)}>
               Reset
             </DropdownMenuItem>
-            <DropdownMenuItem  disabled={todos.length>0 ? false : true} onSelect={() => setOpenDialog(true)}>
+            <DropdownMenuSeparator className='font-bold h-[1px] bg-[var(--color-text)]'/>
+            <DropdownMenuItem className="p-3" disabled={todos.length>0 ? false : true} onSelect={()=>setOpenDialog(true)}>
               Export
             </DropdownMenuItem>
+
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
 
+      <AlertConfrim showConfirm={showConfirm} setshowConfirm={setshowConfirm} confirmDelete={resetStorage}  />
+
       <Dialog open={openDialog} onOpenChange={setOpenDialog} >
         <form>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="max-w-[80vw]  md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px] flex flex-col overflow-x-hidden">
             <DialogHeader>
               <DialogTitle>Export Data</DialogTitle>
               <DialogDescription>
