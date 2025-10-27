@@ -117,20 +117,22 @@ function App() {
 
                     {/* <!-- Calendar --> */}
                     <div
-                    class="glass   rounded-xl shadow  flex flex-col md:flex-row items-center md:items-stretch lg:justify-between   w-full lg:h-[50vh] lg:max-h-[450px] overflow-hidden md:hover:scale-[1.03]"
-                    style={{ padding: "2px", borderRadius: "1rem" }}
+                    class="glass   rounded-3xl !important shadow  flex flex-col md:flex-row items-center md:items-stretch lg:justify-between   w-full lg:h-[50vh] lg:max-h-[450px] overflow-hidden md:hover:scale-[1.03]"
+                    style={{ padding: "2px" }}
                     >
 
                       <LiveClock/>
 
-
+                      <div className="overflow-y-scroll w-full md:w-[55%] m-5  lg:h-[45vh] lg:max-h-[400px]">
                       <Calendar
                           mode="single"
                           selected={calendarDate}
                           onSelect={setCalendarDate}
-                          className="rounded-md  shadow-sm  w-full md:w-[55%] m-5  lg:h-[50vh] lg:max-h-[400px] md:pb-12  overflow-y-scroll  "
+                          className="  shadow-sm  w-full   md:pb-6  "
                           captionLayout="dropdown"
                       />
+                      </div>
+
                     </div>
                     
                     
