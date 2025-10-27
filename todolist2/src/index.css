@@ -5,7 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --color-primary: #645D7E;
+  --color-primary: #460c0c;
+  --color-background:#C6C7DC;
+  
   --color-secondary: #e0e1f1;
   --color-text: #645D7E;
   --color-placeholder : #645D7E;
@@ -47,7 +49,7 @@
 
 body{
 
-    background-color: #c6c7dc;
+    background-color: var(--color-background);
     overflow-x: hidden;
     min-width: 100vw;
 }
