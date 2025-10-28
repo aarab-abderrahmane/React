@@ -4,11 +4,13 @@ import {todosContext} from './TodoList'
 import {Trash2Icon} from './ui/icons/Trash2Icon'
 import { CodeXmlIcon  } from './ui/icons/CodeXmlIcon'
 import {CircleCheckIcon} from './ui/icons/CircleCheckIcon'
-
+import {PreferencesContext} from '../App'
 
 const List = ({id,content,modeEdit,check})=>{
 
-    const {handleCheck,handleEdit,handleSave,hanldeDelete,buttons} = useContext(todosContext)
+    const {PreferencesSettings} = useContext(PreferencesContext)
+    const buttons = PreferencesSettings.buttons
+    const {handleCheck,handleEdit,handleSave,hanldeDelete} = useContext(todosContext)
 
     const [todoContent , setTodoContent] = useState(content)
 

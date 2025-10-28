@@ -56,8 +56,16 @@ function App() {
                 "--color-background": "#C6C7DC",
                 "--color-text": "#645D7E",
                 "--color-button": "#C6C7DC"
-              }
-      }}
+              },
+         
+              },
+          buttons:{
+            buttonDelete: { active: false, color: 'bg-[var(--color-primary-light)]' },
+            buttonEdit: { active: true, color: 'bg-[var(--color-primary-light)]' },
+          }
+    
+    
+    }
 
 
   })
@@ -98,7 +106,7 @@ function App() {
   
   return (
 
-    <PreferencesContext.Provider value={{PreferencesSettings,applyTheme}}>
+    <PreferencesContext.Provider value={{PreferencesSettings,setPreferencesSettings,applyTheme}}>
     <SmoothCursor  />
       <ToastContext.Provider>
           

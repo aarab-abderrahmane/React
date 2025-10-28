@@ -33,23 +33,22 @@ import { CodeXmlIcon  } from './ui/icons/CodeXmlIcon'
 
 export function Preferences({showPreferences,setShowPreferences}) {
 
-  const { PreferencesSettings, applyTheme } = useContext(PreferencesContext);
+  const { PreferencesSettings,setPreferencesSettings, applyTheme } = useContext(PreferencesContext);
 
-
-  const {buttons,setButtons} = useContext(todosContext)
-
-  // const[LocalData,setLocalData] = useState({buttons:buttons,themes:PreferencesSettings})
+  let ButtonsState = PreferencesSettings.buttons
 
   function toggleButton(buttonkey){
-
-        setButtons(prev=>({
+        console.log("hello worl")
+        setPreferencesSettings(prev=>({
 
             ...prev,
+            buttons:{
+              ...prev.buttons,
               [buttonkey]:{
-                  ...prev[buttonkey],
-                  active:!prev[buttonkey].active
+                  ...prev.buttons[buttonkey],
+                  active:!prev.buttons[buttonkey].active
               }
-            
+            }
        
         }))
         
@@ -90,8 +89,8 @@ export function Preferences({showPreferences,setShowPreferences}) {
                 <div className=" bg-white/50 h-[55px] max-w-[400px] w-[80%] rounded-xl flex items-center justify-between px-4 border border-black">
                     <p >Todo List</p>
                     <div className="flex justify-end flex-1 h-full pe-4  ">
-                        < Trash2Icon  size={25} duration={0.5}  class={` border-l border-black w-[50px] p-2 flex items-center  justify-center ${buttons.buttonDelete.active ? buttons.buttonDelete.color : "bg-transparent"}`} onClick={()=>toggleButton('buttonDelete')} />    
-                        < CodeXmlIcon  size={25} duration={0.5}  class={` border-l border-r border-black w-[50px] p-2 flex items-center  justify-center ${buttons.buttonEdit.active ? buttons.buttonEdit.color : "bg-transparent"}`} onClick={()=>toggleButton('buttonEdit')} />    
+                        < Trash2Icon  size={25} duration={0.5}  class={` border-l border-black text-[var(--color-text)] w-[50px] p-2 flex items-center  justify-center ${ButtonsState.buttonDelete.active ? "bg-[var(--color-background)]" : "bg-transparent"}`} onClick={()=>toggleButton('buttonDelete')} />    
+                        < CodeXmlIcon  size={25} duration={0.5}  class={` border-l border-r border-black text-[var(--color-text)] w-[50px] p-2 flex items-center  justify-center ${ButtonsState.buttonEdit.active ? "bg-[var(--color-background)]" : "bg-transparent"}`} onClick={()=>toggleButton('buttonEdit')} />    
                     </div>
                     <div className="w-[25px] h-[25px] border-2 border-black rounded-md"></div>
                 </div>
@@ -131,11 +130,22 @@ export function Preferences({showPreferences,setShowPreferences}) {
 
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-3" disabled>
-        <AccordionTrigger>Display Preferences</AccordionTrigger>
+      <AccordionItem value="item-3"   >
+        <AccordionTrigger>Custome Cursor</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4 text-balance">
 
+              <div  className="">
 
+                    <div className="w-[120px] h-[120px] bg-[var(--color-button)]  flex flex-col justify-center items-center gap-3 border-2 border-[var(--color-text)] rounded-3xl  ">
+                          
+                          <i class="bi bi-cursor-fill text-lg bg-white border-[var(--color-text)] flex items-center justify-center w-[40px] h-[40px] rounded-full border-2"></i>
+
+                          <p className="p-2">Smoth cursor</p>
+
+                    </div>
+
+
+              </div>
 
         </AccordionContent>
       </AccordionItem>

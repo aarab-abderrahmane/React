@@ -33,23 +33,20 @@ export  function TodoList() {
       : setActiveSparkles(false);
   };
 
-  const [buttons, setButtons] = useState(()=>{
+  // const [buttons, setButtons] = useState(()=>{
 
-      const saved = localStorage.getItem("buttonsState");
-      return saved && saved !== "null" && saved !== "undefined" 
-        ? JSON.parse(saved)
-        :
-          {
-          buttonDelete: { active: false, color: 'bg-[var(--color-primary-light)]' },
-          buttonEdit: { active: false, color: 'bg-[var(--color-primary-light)]' },
-        }
+  //     const saved = localStorage.getItem("buttonsState");
+  //     return saved && saved !== "null" && saved !== "undefined" 
+  //       ? JSON.parse(saved)
+  //       :
+          
         
 
-  });
+  // });
 
-  useEffect(()=>{
-      localStorage.setItem('buttonsState',JSON.stringify(buttons))
-  },[buttons])
+  // useEffect(()=>{
+  //     localStorage.setItem('buttonsState',JSON.stringify(buttons))
+  // },[buttons])
 
 
   const [todos, setTodos] = useState(() => {
@@ -180,7 +177,7 @@ export  function TodoList() {
 
 
   return (
-    <todosContext.Provider  value={{todos,handleAdd,setButtons,buttons,handleCheck,handleEdit,handleSave,hanldeDelete}}>
+    <todosContext.Provider  value={{todos,handleAdd,handleCheck,handleEdit,handleSave,hanldeDelete}}>
 
     <div className="flex flex-col gap-6  w-[90vw]  md:w-[50vw]    max-w-[550px] h-[90vh]  max-h-[850px]">
       {/* <!-- Input --> */}
