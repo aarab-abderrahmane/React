@@ -40,6 +40,7 @@ export function CartReducer(state, action) {
             item.id === product.id ? { ...item, qte: item.qte + 1 } : item
           )
         : [...state.cart, { ...product, qte: 1 }];
+
       return { ...state, cart: updatedCart };
     }
 
@@ -70,10 +71,12 @@ export function CartReducer(state, action) {
 
 
     case ACTIONS.GETTOTALAMOUNT: {
+
       const total = state.cart.reduce(
         (sum, item) => sum + item.price * item.qte,
         0
       );
+      
       return { ...state, totalAmount: total };
     }
 
