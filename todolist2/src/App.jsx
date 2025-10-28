@@ -21,6 +21,7 @@ function App() {
       return saved && saved!==null && saved!==undefined 
       ? JSON.parse(saved) 
       :  {   
+            general:{hideTexts:false},
             cursorType:"smooth",
             theme_name:"default",
             themes: {
@@ -61,14 +62,12 @@ function App() {
               },
          
               },
-          buttons:{
-            buttonDelete: { active: false, color: 'bg-[var(--color-primary-light)]' },
-            buttonEdit: { active: true, color: 'bg-[var(--color-primary-light)]' },
-          }
-    
+            buttons:{
+              buttonDelete: { active: false, color: 'bg-[var(--color-primary-light)]' },
+              buttonEdit: { active: true, color: 'bg-[var(--color-primary-light)]' },
+            }
     
     }
-
 
   })
 
@@ -144,11 +143,14 @@ function App() {
       {PreferencesSettings.cursorType==="smooth" ? <SmoothCursor  /> : ""}
       
       <ToastContext.Provider>
-          
-            <div className="absolute z[-999] flex flex-col jutify-center hidden xl:block text-[var(--color-text)]  overflow-hidden">
-              <h1 className="text-[21vw] align-baseline inline-block  h-[50vh]  text-center w-full mt-[-70px]" style={{fontWeight: "700",fontStyle: "normal"}}>Tuesday</h1>
-              <h1 className="text-[21vw] align-baseline inline-block h-[50vh] text-center w-full" style={{fontWeight: "700",fontStyle: "normal"}}>Midnight</h1>
-            </div>
+
+            {!PreferencesSettings.general.hideTexts && (
+                  <div className="absolute z[-999] flex flex-col jutify-center hidden xl:block text-[var(--color-text)]  overflow-hidden">
+                    <h1 className="text-[21vw] align-baseline inline-block  h-[50vh]  text-center w-full mt-[-70px]" style={{fontWeight: "700",fontStyle: "normal"}}>Tuesday</h1>
+                    <h1 className="text-[21vw] align-baseline inline-block h-[50vh] text-center w-full" style={{fontWeight: "700",fontStyle: "normal"}}>Midnight</h1>
+                  </div>
+            )}
+
             
 
               <div className="flex flex-col  items-center mt-12 md:mt-0 xl:flex-row xl:justify-center w-[100vw]  gap-4 p-4 lg:p-8 min-h-screen overflow-y-scroll overflow-x-hidden  ">

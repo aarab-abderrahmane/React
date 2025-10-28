@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog"
-import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 
 
@@ -20,11 +19,19 @@ import {
   AccordionTrigger,
 } from "./ui/accordion"
 
-import { useContext, useEffect} from "react"
+import { useContext} from "react"
 import {PreferencesContext} from '../App'
 import {Trash2Icon} from './ui/icons/Trash2Icon'
 import { CodeXmlIcon  } from './ui/icons/CodeXmlIcon'
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "./ui/tooltip"
+
+
+import { Switch } from "./ui/switch"
 
 
 
@@ -85,8 +92,8 @@ export function Preferences({showPreferences,setShowPreferences}) {
       className="w-full"
       defaultValue="item-1"
     >
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Button Visibility Preferences</AccordionTrigger>
+      <AccordionItem value="item-4">
+        <AccordionTrigger  >Button Visibility Preferences</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4 text-balance">
 
             <div className="w-full flex justify-center ">
@@ -100,45 +107,49 @@ export function Preferences({showPreferences,setShowPreferences}) {
                 </div>
             </div>
             
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2" >
-        <AccordionTrigger>Theme Preferences</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2" >
+          <AccordionTrigger>Theme Preferences</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
 
-            <div className="flex justify-center gap-3 " >
+              <div className="flex justify-center gap-3 " >
 
-                
-                {Object.keys(PreferencesSettings.themes)?.map((key,index)=>{ 
-                    const colorInfo = PreferencesSettings.themes[key]
+                  
+                  {Object.keys(PreferencesSettings.themes)?.map((key,index)=>{ 
+                      const colorInfo = PreferencesSettings.themes[key]
 
-                    return key!=="default"? ( 
-                      <div key={index}
-                       className={`w-[40px] h-[40px]
-                        bg-[${colorInfo['--color-button']}] 
-                        rounded-full hover:border-2 
-                        ${PreferencesSettings.theme_name===key ? "border-2" : "" } 
-                        border-[var(--color-primary)]
-                        
-                        `} onClick={PreferencesSettings.theme_name===key ? undefined : ()=>applyTheme(key) }   >
+                      return key!=="default"? ( 
+                        <div key={index}
+                        className={`w-[40px] h-[40px]
+                          bg-[${colorInfo['--color-button']}] 
+                          rounded-full hover:border-2 
+                          ${PreferencesSettings.theme_name===key ? "border-2" : "" } 
+                          border-[var(--color-primary)]
+                          
+                          `} onClick={PreferencesSettings.theme_name===key ? undefined : ()=>applyTheme(key) }   >
 
-                       </div> 
+                        </div> 
 
-                    )  : ""
-                    
-                  })}
+                      )  : ""
+                      
+                    })}
 
-                  <button className="bg-[var(--color-button)] rounded-xl text-[var(--color-text)] border-[var(--color-text)] w-[80px] border-2" onClick={()=>applyTheme('default')}>Reset</button>
+                    <button className="bg-[var(--color-button)] rounded-xl text-[var(--color-text)] border-[var(--color-text)] w-[80px] border-2" onClick={()=>applyTheme('default')}>Reset</button>
 
-            </div>
+              </div>
 
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3"   >
-        <AccordionTrigger>Custome Cursor</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
+          </AccordionContent>
+        </AccordionItem>
+
+
+        <AccordionItem value="item-3"   >
+          <AccordionTrigger>Custome Cursor</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
 
               <div  className="flex justify-center items-center gap-3 flex-col md:flex-row">
+                  <Tooltip>
+                    <TooltipTrigger>
 
                     <div 
                     onClick={()=>ToggleCursor('smooth')}
@@ -150,21 +161,68 @@ export function Preferences({showPreferences,setShowPreferences}) {
 
                     </div>
 
-                    <div 
-                    onClick={()=>ToggleCursor('default')}
-                    className={`w-[140px] h-[140px] ${PreferencesSettings.cursorType==="default" ? "bg-[var(--color-button)]" :"" }  flex flex-col justify-center items-center gap-3 border-2 border-[var(--color-text)] rounded-3xl hover:cursor-pointer `}>
-                          
-                          <i class="bi bi-ban text-lg bg-white border-[var(--color-text)] flex items-center justify-center w-[40px] h-[40px] rounded-full border-2"></i>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Slow, fluid cursor animation</p>
+                    </TooltipContent>
+                  </Tooltip>
 
-                          <p className="p-2  text-center">browser cursor</p>
 
-                    </div>
+                    
+                    <Tooltip>
+                      <TooltipTrigger>
+
+                          <div 
+                          onClick={()=>ToggleCursor('default')}
+                          className={`w-[140px] h-[140px] ${PreferencesSettings.cursorType==="default" ? "bg-[var(--color-button)]" :"" }  flex flex-col justify-center items-center gap-3 border-2 border-[var(--color-text)] rounded-3xl hover:cursor-pointer `}>
+                                
+                                <i class="bi bi-ban text-lg bg-white border-[var(--color-text)] flex items-center justify-center w-[40px] h-[40px] rounded-full border-2"></i>
+
+                                <p className="p-2  text-center">browser cursor</p>
+
+                          </div>
+
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Normal system cursor</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+
+
 
 
               </div>
 
         </AccordionContent>
       </AccordionItem>
+
+      <AccordionItem value="item-1"  >
+        <AccordionTrigger>General</AccordionTrigger>
+        <AccordionContent className="flex flex-col gap-4 text-balance">
+                  
+
+                  
+              <div  className="h-[50px] flex ">
+                <div className="flex items-center space-x-2">
+                    <Switch 
+                    id="airplane-mode" 
+                    className="bg-gray-400"
+                    checked={PreferencesSettings.general.hideTexts}
+                    onCheckedChange={(checked) => setPreferencesSettings(prev => ({
+                        ...prev,
+                        general: { ...prev.general, hideTexts: checked }
+                      }))}
+
+                    />
+                    <Label htmlFor="airplane-mode">Hide the texts.</Label>
+                  </div>
+              </div>
+
+        </AccordionContent>
+      </AccordionItem>
+
+
     </Accordion>
 
           <DialogFooter>

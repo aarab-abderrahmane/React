@@ -219,7 +219,7 @@ body.smooth-cursor  *{
 
 
 body.default-cursor button,
-body.default-cursor div,
+/* body.default-cursor div, */
 body.default-cursor a,
 body.default-cursor [role="button"],
 body.default-cursor .cursor-pointer {
