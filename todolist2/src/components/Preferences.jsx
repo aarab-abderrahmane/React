@@ -20,8 +20,7 @@ import {
   AccordionTrigger,
 } from "./ui/accordion"
 
-import { useContext} from "react"
-import {todosContext} from './TodoList'
+import { useContext, useEffect} from "react"
 import {PreferencesContext} from '../App'
 import {Trash2Icon} from './ui/icons/Trash2Icon'
 import { CodeXmlIcon  } from './ui/icons/CodeXmlIcon'
@@ -33,7 +32,7 @@ import { CodeXmlIcon  } from './ui/icons/CodeXmlIcon'
 
 export function Preferences({showPreferences,setShowPreferences}) {
 
-  const { PreferencesSettings,setPreferencesSettings, applyTheme } = useContext(PreferencesContext);
+  const { PreferencesSettings,setPreferencesSettings, applyTheme,ToggleCursor  } = useContext(PreferencesContext);
 
   let ButtonsState = PreferencesSettings.buttons
 
@@ -54,6 +53,11 @@ export function Preferences({showPreferences,setShowPreferences}) {
         
 
   }
+
+
+  
+
+  
 
 
 
@@ -134,13 +138,25 @@ export function Preferences({showPreferences,setShowPreferences}) {
         <AccordionTrigger>Custome Cursor</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4 text-balance">
 
-              <div  className="">
+              <div  className="flex justify-center items-center gap-3 flex-col md:flex-row">
 
-                    <div className="w-[120px] h-[120px] bg-[var(--color-button)]  flex flex-col justify-center items-center gap-3 border-2 border-[var(--color-text)] rounded-3xl  ">
+                    <div 
+                    onClick={()=>ToggleCursor('smooth')}
+                    className={`w-[140px] h-[140px] ${PreferencesSettings.cursorType==="smooth" ? "bg-[var(--color-button)]" :"" }  flex flex-col justify-center items-center gap-3 border-2 border-[var(--color-text)] rounded-3xl hover:cursor-pointer `}>
                           
                           <i class="bi bi-cursor-fill text-lg bg-white border-[var(--color-text)] flex items-center justify-center w-[40px] h-[40px] rounded-full border-2"></i>
 
-                          <p className="p-2">Smoth cursor</p>
+                          <p className="p-2">Smooth cursor</p>
+
+                    </div>
+
+                    <div 
+                    onClick={()=>ToggleCursor('default')}
+                    className={`w-[140px] h-[140px] ${PreferencesSettings.cursorType==="default" ? "bg-[var(--color-button)]" :"" }  flex flex-col justify-center items-center gap-3 border-2 border-[var(--color-text)] rounded-3xl hover:cursor-pointer `}>
+                          
+                          <i class="bi bi-ban text-lg bg-white border-[var(--color-text)] flex items-center justify-center w-[40px] h-[40px] rounded-full border-2"></i>
+
+                          <p className="p-2  text-center">browser cursor</p>
 
                     </div>
 

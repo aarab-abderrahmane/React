@@ -20,7 +20,9 @@ function App() {
       const saved = localStorage.getItem('Preferences');
       return saved && saved!==null && saved!==undefined 
       ? JSON.parse(saved) 
-      :  {   theme_name:"default",
+      :  {   
+            cursorType:"smooth",
+            theme_name:"default",
             themes: {
               red: {
                 "--color-background": "#dc9090",
@@ -99,6 +101,37 @@ function App() {
   },[])
 
 
+  function ToggleCursor(selectedCursor=""){
+
+
+        const body= document.body
+        let Type = (selectedCursor ?  selectedCursor : PreferencesSettings?.cursorType)
+        Type =  Type.toLowerCase()
+
+
+        if(Type==="smooth" && !body.classList.contains('smooth-cursor')){
+                body.classList.remove('default-cursor')
+                body.classList.add('smooth-cursor')
+                setPreferencesSettings(prev=>({...prev,cursorType:Type}))
+        }
+
+        if(Type==="default" && !body.classList.contains('default-cursor')){
+                body.classList.add('default-cursor')
+                body.classList.remove('smooth-cursor')
+                setPreferencesSettings(prev=>({...prev,cursorType:Type}))
+
+
+        }
+
+  }
+
+
+  useEffect(()=>{
+      ToggleCursor(PreferencesSettings.cursorType)
+
+  },[])
+
+
 
 
 
@@ -106,8 +139,10 @@ function App() {
   
   return (
 
-    <PreferencesContext.Provider value={{PreferencesSettings,setPreferencesSettings,applyTheme}}>
-    <SmoothCursor  />
+    <PreferencesContext.Provider value={{PreferencesSettings,setPreferencesSettings,applyTheme,ToggleCursor}}>
+
+      {PreferencesSettings.cursorType==="smooth" ? <SmoothCursor  /> : ""}
+      
       <ToastContext.Provider>
           
             <div className="absolute z[-999] flex flex-col jutify-center hidden xl:block text-[var(--color-text)]  overflow-hidden">

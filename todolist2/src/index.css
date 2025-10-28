@@ -192,10 +192,6 @@ body{
   body {
     @apply bg-background text-foreground;}}
 
-* {
-  cursor: none !important;
-  box-sizing: border-box;
-}
 
 #root,body{
   width: 100vw;
@@ -204,13 +200,35 @@ body{
   align-items: center;
 }
 
-input,
-textarea,
-select {
-  cursor: text !important;
+
+*{
+  box-sizing: border-box;
+
 }
 
-/* Custom richColors palette */
+/* default cursor : */
+body.default-cursor *{
+  cursor: auto !important;
+}
+
+
+/* for smooth cursor : */
+body.smooth-cursor  *{
+  cursor: none !important;
+}
+
+
+body.default-cursor button,
+body.default-cursor div,
+body.default-cursor a,
+body.default-cursor [role="button"],
+body.default-cursor .cursor-pointer {
+  cursor: pointer !important;
+}
+
+
+
+/* Custom richColors palette 'Sooner' */
 
 [data-sonner-toast]{
   border-radius: 15px !important;

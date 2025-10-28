@@ -35,7 +35,7 @@ const List = ({id,content,modeEdit,check})=>{
                 <div className="flex  items-center justify-end gap-3  w-[110px]  ">
                     
 
-                    < CodeXmlIcon  size={25} duration={0.5}  class={` text-blue-500  hidden ${check || modeEdit || !buttons?.buttonEdit.active ? "" : "group-hover:block" }`} onClick={()=>handleEdit(id)}/>
+                    < CodeXmlIcon  size={25} duration={0.5}  class={` text-[var(--color-text)]  hidden ${check || modeEdit || !buttons?.buttonEdit.active ? "" : "group-hover:block" }`} onClick={()=>handleEdit(id)}/>
                     
                     <Trash2Icon  size={25} duration={0.5} onClick={()=>hanldeDelete(id)} class={` cursor-pointer text-red-600  hidden ${ modeEdit || !buttons?.buttonDelete.active ? "" : "group-hover:block" } `}  />
                     <CircleCheckIcon  size={30} duration={0.5} class={`rounded-full  cursor-pointer hidden text-[var(--color-text)]  ${check || !modeEdit ? "" : "group-hover:block"} `}  onClick={verify} />

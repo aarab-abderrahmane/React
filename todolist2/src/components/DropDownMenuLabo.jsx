@@ -96,7 +96,7 @@ export default function DropdownMenuLabo() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-[80vw] lg:w-[50vw] max-w-[300px] rounded-xl border-2 border-[var(--color-text)]  " align="end" >
-          <DropdownMenuLabel className="p-3 bg-[var(--color-primary)] text-white" >Actions</DropdownMenuLabel>
+          <DropdownMenuLabel className="p-3 bg-[var(--color-background)] text-[var(--color-text)]" >Actions</DropdownMenuLabel>
           <DropdownMenuGroup className="">
             <DropdownMenuSeparator className='h-[2px] bg-[var(--color-text)]'/>
 
