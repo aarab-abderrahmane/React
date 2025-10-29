@@ -33,7 +33,8 @@ import {
 
 import { Switch } from "./ui/switch"
 
-
+import { Slider } from "./ui/slider"
+import { Settings } from "lucide-react"
 
 
 
@@ -113,7 +114,7 @@ export function Preferences({showPreferences,setShowPreferences}) {
           <AccordionTrigger>Theme Preferences</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
 
-              <div className="flex justify-center gap-3 " >
+              <div className="flex justify-center gap-3 flex-wrap sm:flex-nowrap" >
 
                   
                   {Object.keys(PreferencesSettings.themes)?.map((key,index)=>{ 
@@ -203,8 +204,8 @@ export function Preferences({showPreferences,setShowPreferences}) {
                   
 
                   
-              <div  className="h-[50px] flex ">
-                <div className="flex items-center space-x-2">
+              <div  className="h-[50px] flex flex-col gap-6 ">
+                  <div className="flex items-center space-x-2">
                     <Switch 
                     id="airplane-mode" 
                     className="bg-gray-400"
@@ -217,6 +218,26 @@ export function Preferences({showPreferences,setShowPreferences}) {
                     />
                     <Label htmlFor="airplane-mode">Hide the texts.</Label>
                   </div>
+
+                  {!PreferencesSettings.general.hideTexts && (
+                        <div className="flex items-center gap-4">
+                          <p>Opacity (Text) : </p>
+                          <Slider
+                            defaultValue={[PreferencesSettings.general.opacityTexts]}
+                            min={0}
+                            max={100}
+                            step={10}
+                            onValueChange={(value) =>
+                              setPreferencesSettings((prev) => ({
+                                ...prev,
+                                general: { ...prev.general, opacityTexts: value[0] },
+                              }))
+                            }
+                            className="bg-gray-400 max-w-[300px] w-[80vw] rounded-full mx-2"
+                          />
+
+                        </div>
+                  )}
               </div>
 
         </AccordionContent>

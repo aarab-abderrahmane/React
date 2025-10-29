@@ -21,7 +21,7 @@ function App() {
       return saved && saved!==null && saved!==undefined 
       ? JSON.parse(saved) 
       :  {   
-            general:{hideTexts:false},
+            general:{hideTexts:false,opacityTexts:100},
             cursorType:"smooth",
             theme_name:"default",
             themes: {
@@ -146,8 +146,11 @@ function App() {
 
             {!PreferencesSettings.general.hideTexts && (
                   <div className="absolute z[-999] flex flex-col jutify-center hidden xl:block text-[var(--color-text)]  overflow-hidden">
-                    <h1 className="text-[21vw] align-baseline inline-block  h-[50vh]  text-center w-full mt-[-70px]" style={{fontWeight: "700",fontStyle: "normal"}}>Tuesday</h1>
-                    <h1 className="text-[21vw] align-baseline inline-block h-[50vh] text-center w-full" style={{fontWeight: "700",fontStyle: "normal"}}>Midnight</h1>
+                    <h1 className=" text-[21vw] align-baseline inline-block  h-[50vh]  text-center w-full mt-[-70px]" 
+                    style={{fontWeight: "700",fontStyle: "normal",opacity: PreferencesSettings.general.opacityTexts / 100}}>Tuesday</h1>
+
+                    <h1 className="text-[21vw] align-baseline inline-block h-[50vh] text-center w-full"
+                     style={{fontWeight: "700",fontStyle: "normal",opacity: PreferencesSettings.general.opacityTexts / 100}}>Midnight</h1>
                   </div>
             )}
 
