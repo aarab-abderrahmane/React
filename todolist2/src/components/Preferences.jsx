@@ -34,9 +34,15 @@ import {
 import { Switch } from "./ui/switch"
 
 import { Slider } from "./ui/slider"
-import { Settings } from "lucide-react"
 
+import { ChevronsUpDown } from "lucide-react"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible"
 
+import { useState } from "react"
 
 export function Preferences({showPreferences,setShowPreferences}) {
 
@@ -64,6 +70,7 @@ export function Preferences({showPreferences,setShowPreferences}) {
 
 
   
+  const [isOpen, setIsOpen] = useState(false)
 
   
 
@@ -78,7 +85,7 @@ export function Preferences({showPreferences,setShowPreferences}) {
       }}>
       <form>
 
-        <DialogContent className="max-w-[80vw] backdrop-blur-md border-2 bg-white/60 rounded-3xl   md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] flex flex-col overflow-x-hidden">
+        <DialogContent className="max-w-[80vw] backdrop-blur-md border-2 bg-white/60 rounded-3xl   md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px]   flex flex-col overflow-hidden">
           <DialogHeader>
             <DialogTitle>Preferences</DialogTitle>
             <DialogDescription>
@@ -87,15 +94,17 @@ export function Preferences({showPreferences,setShowPreferences}) {
           </DialogHeader>
 
 
+          <div className="max-h-[400px] overflow-x-hidden overflow-y-scroll p-4">
+
           <Accordion
       type="single"
       collapsible
-      className="w-full"
+      className="w-full "
       defaultValue="item-1"
     >
       <AccordionItem value="item-4">
         <AccordionTrigger  >Button Visibility Preferences</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
+        <AccordionContent className="flex flex-col gap-4 text-balance"> 
 
             <div className="w-full flex justify-center ">
                 <div className=" bg-white/50 h-[55px] max-w-[400px] w-[80%] rounded-xl flex items-center justify-between px-4 border border-black">
@@ -204,49 +213,81 @@ export function Preferences({showPreferences,setShowPreferences}) {
                   
 
                   
-              <div  className="h-[50px] flex flex-col gap-6 ">
-                  <div className="flex items-center space-x-2">
-                    <Switch 
-                    id="airplane-mode" 
-                    className="bg-gray-400"
-                    checked={PreferencesSettings.general.hideTexts}
-                    onCheckedChange={(checked) => setPreferencesSettings(prev => ({
-                        ...prev,
-                        general: { ...prev.general, hideTexts: checked }
-                      }))}
+              <div  className="h-[150px] flex flex-col gap-6 ">
+                    
 
-                    />
-                    <Label htmlFor="airplane-mode">Hide the texts.</Label>
-                  </div>
 
-                  {!PreferencesSettings.general.hideTexts && (
-                        <div className="flex items-center gap-4">
-                          <p>Opacity (Text) : </p>
-                          <Slider
-                            defaultValue={[PreferencesSettings.general.opacityTexts]}
-                            min={0}
-                            max={100}
-                            step={10}
-                            onValueChange={(value) =>
-                              setPreferencesSettings((prev) => ({
-                                ...prev,
-                                general: { ...prev.general, opacityTexts: value[0] },
-                              }))
-                            }
-                            className="bg-gray-400 max-w-[300px] w-[80vw] rounded-full mx-2"
-                          />
-
+                      <Collapsible
+                        open={isOpen}
+                        onOpenChange={setIsOpen}
+                        className="flex w-full flex-col gap-2"
+                      >
+                        <div className="flex items-center gap-12 px-4">
+                          <h4 className="text-sm font-semibold">
+                            Costume Text :
+                          </h4>
+                          <CollapsibleTrigger asChild>
+                            <Button variant="ghost" size="icon" className="size-8">
+                              <ChevronsUpDown />
+                              <span className="sr-only">Toggle</span>
+                            </Button>
+                          </CollapsibleTrigger>
                         </div>
-                  )}
+                        <div className=" px-4 py-2  text-sm">
+
+                          <div className="flex items-center space-x-2">
+                                      <Switch 
+                                      id="airplane-mode" 
+                                      className="bg-gray-400"
+                                      checked={PreferencesSettings.general.hideTexts}
+                                      onCheckedChange={(checked) => setPreferencesSettings(prev => ({
+                                          ...prev,
+                                          general: { ...prev.general, hideTexts: checked }
+                                        }))}
+
+                                      />
+                                      <Label htmlFor="airplane-mode">Hide the texts.</Label>
+                                    </div>
+                        </div>
+                        <CollapsibleContent className="flex flex-col gap-2 w-full ">
+                          <div className=" px-4 py-2  text-sm">
+                            {!PreferencesSettings.general.hideTexts && (
+                                          <div className="flex items-center gap-4">
+                                            <p>Opacity (Text) : </p>
+                                            <Slider
+                                              defaultValue={[PreferencesSettings.general.opacityTexts]}
+                                              min={0}
+                                              max={100}
+                                              step={10}
+                                              onValueChange={(value) =>
+                                                setPreferencesSettings((prev) => ({
+                                                  ...prev,
+                                                  general: { ...prev.general, opacityTexts: value[0] },
+                                                }))
+                                              }
+                                              className="bg-gray-400 max-w-[300px] w-[80vw] rounded-full mx-2"
+                                            />
+
+                                          </div>
+                                    )}
+                          </div>
+                        
+                        </CollapsibleContent>
+                      </Collapsible>
+                  
+
               </div>
 
         </AccordionContent>
       </AccordionItem>
 
 
-    </Accordion>
+          </Accordion>
+            
+          </div>
 
-          <DialogFooter>
+
+          <DialogFooter className="">
             <DialogClose asChild>
               <Button variant="default">Back</Button>
             </DialogClose>

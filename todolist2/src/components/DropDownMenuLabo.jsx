@@ -23,7 +23,8 @@ import { MoreHorizontalIcon } from "lucide-react";
 import { useState, useContext } from "react"; // Add useContext
 import { todosContext } from "./TodoList"; // Import the context
 
-import CodeBlockDemo from "./CodeBlockDemo";
+// import CodeBlockDemo from "./CodeBlockDemo";
+import { CodeBlock } from "./ui/codeblock";
 import {AlertConfrim} from './AlertConfirm';
 import {Preferences} from './Preferences'
 
@@ -121,6 +122,8 @@ export default function DropdownMenuLabo() {
 
       <AlertConfrim showConfirm={showConfirm} setshowConfirm={setshowConfirm} confirmDelete={resetStorage}  />
 
+
+
       <Dialog open={openDialog} onOpenChange={setOpenDialog} >
         <form>
           <DialogContent className=" backdrop-blur-md border-2 bg-white/60 rounded-3xl max-w-[80vw]  md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px] flex flex-col overflow-x-hidden">
@@ -131,10 +134,21 @@ export default function DropdownMenuLabo() {
               </DialogDescription>
             </DialogHeader>
 
+
+              
             <div>
-                <div >
+                {/* <div >
                 <CodeBlockDemo code={Code} language="json"  />
-                </div>
+                </div> */}
+                <CodeBlock
+                  language="typescript"
+                  filename="todos.json"
+                  tabs={[
+                    { name: 'todos.json', code: Code, language: 'json' }
+                  ]}
+                  // breadcrumb={['src', 'components']}
+                  // breadcrumb={['todos.json']}
+                />
             </div>
 
 
