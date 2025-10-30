@@ -20,12 +20,12 @@ function LiveClock() {
 
     return (
 
-        <div className="flex flex-col backdrop-blur-[20px] bg-white/40 rounded-3xl  bg-[var(--color-secondary)] w-full md:w-[50%] overflow-y-hidden">
-            <div className="flex justify-between p-4 font-bold text-xl">
+        <div className="flex flex-col backdrop-blur-[20px] bg-white/40 rounded-3xl   w-full md:w-[50%] overflow-y-hidden">
+            <div className="flex justify-between p-4 font-bold text-xl border-b-4 border-white/20">
             <h1>{month}</h1>
             <h1>{year}</h1>
             </div>
-            <hr></hr>
+
             <div className="w-full flex  flex-1  justify-center items-center">
             <h1 className="text-[8rem]  md:text-[9rem] 2xl:text-[12rem] font-bold">{day}</h1>
             </div>
