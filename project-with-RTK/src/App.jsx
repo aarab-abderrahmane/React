@@ -1,24 +1,35 @@
-import {Provider}   from 'react-redux';
-import {store} from './store'
 
+import { useSelector , useDispatch } from 'react-redux';
 
-import { useDispatch } from 'react-redux';
-import { increment } from './counterSlice';
-import { useSelector } from "react-redux";
+import {increment,decrement,restart,editBasedValue} from './counterSlice'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  const count_nb = useSelector(state => state.counter.count_nb)
+  const state = useSelector(state =>  state.counter )
+
+  const dispatch = useDispatch()
+
+
+  console.log(dispatch)
+
+  console.log(increment("hello"))
 
 
   return (
     <>
-        <Provider store={store}>
-                <p>
-                  {count_nb}
-                </p>
-        </Provider>
+          <div>
+            <h1>Value based on</h1>
+            <input type="text"
+            onChange={(e)=>dispatch(editBasedValue({newValue:Number(e.target.value)}))}
+            value={state.basedValue}></input>
+          </div>
+           <p>{state.count_nb}</p>
+
+           <button onClick={()=>dispatch(increment())}>increment</button>
+           <button onClick={()=>dispatch(decrement())} >decrement</button>
+           <button  onClick={()=>dispatch(restart())} >restart</button>
+   
+   
     </>
   )
 }
