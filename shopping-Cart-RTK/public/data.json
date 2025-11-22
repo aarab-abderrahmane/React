@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "image": "https://picsum.photos/300/300?random=1",
+    "title": "Wireless Bluetooth Headphones",
+    "prix": 59.99,
+    "added": false,
+    "quantity": 0
+  },
+  {
+    "id": 2,
+    "image": "https://picsum.photos/300/300?random=2",
+    "title": "Mechanical Gaming Keyboard",
+    "prix": 120.00,
+    "added": false,
+    "quantity": 0
+  },
+  {
+    "id": 3,
+    "image": "https://picsum.photos/300/300?random=3",
+    "title": "Smart Watch Series 5",
+    "prix": 199.50,
+    "added": false,
+    "quantity": 0
+  },
+  {
+    "id": 4,
+    "image": "https://picsum.photos/300/300?random=4",
+    "title": "Cotton Hoodie (Black)",
+    "prix": 45.00,
+    "added": false,
+    "quantity": 0
+  },
+  {
+    "id": 5,
+    "image": "https://picsum.photos/300/300?random=5",
+    "title": "Ceramic Coffee Mug",
+    "prix": 12.99,
+    "added": false,
+    "quantity": 0
+  },
+  {
+    "id": 6,
+    "image": "https://picsum.photos/300/300?random=6",
+    "title": "4K Monitor 27-inch",
+    "prix": 349.99,
+    "added": false,
+    "quantity": 0
+  },
+  {
+    "id": 7,
+    "image": "https://picsum.photos/300/300?random=7",
+    "title": "Ergonomic Office Chair",
+    "prix": 149.99,
+    "added": false,
+    "quantity": 0
+  }
+
+]
