@@ -3,6 +3,7 @@ import { useSelector , useDispatch } from "react-redux";
 import { useEffect , useState } from "react";
 import styled from "styled-components"
 
+import {ADD_STGIAIRE} from '../features/stagiaireSlice'
 
 import {v4 as UUIDv4} from 'uuid'
 
@@ -21,8 +22,7 @@ export const Form = ()=>{
             setStagiaireId(Gen_stagiaireId)
     },[stagiaiesStates])
 
-
-    console.log(formStates)
+    
 
     const InputType = {
         id : "ID" , 
@@ -47,9 +47,34 @@ export const Form = ()=>{
             dispatch(UPDATE_INPUT_VALUE({type:inputType , value : inputValue}))
     }
 
+
+
+    const isFromFeildsValid = ()=>{
+        return formStates.every(inp => inp.errorMes.length === 0)
+    }
+    
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+
+        isFromFeildsValid() 
+        ? dispatch(ADD_STGIAIRE({
+            id : stagiaireId ,
+            matricule : GetValue(InputType.mat),
+            nom : GetValue(InputType.nom),
+            ville : GetValue(InputType.ville),
+            codePostal : GetValue(InputType.code),
+            moyenne : GetValue(InputType.moy)
+        }))
+        : alert('Invalide content')
+    
+    }
+
+
     return(
 
-        <from className="flex flex-col max-w-2xl  ">
+        <form className="flex flex-col max-w-2xl"
+        onSubmit={handleSubmit}
+        >
 
             <label>id</label>
 
@@ -97,8 +122,11 @@ export const Form = ()=>{
             value={GetValue(InputType.moy)}
             onChange={handleChange}
             />
+            
+            <button type="submit">Ajouter</button>
+        </form>
 
-        </from>
+
     )
 
 

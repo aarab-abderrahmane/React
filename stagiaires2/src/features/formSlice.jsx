@@ -11,9 +11,9 @@ const InputType = {
 
 const InputPattern = {
 
-    nom : /^[A-Za-z\s]{2,10}$/,
-    ville : /^[A-Za-z\s]{2,10}$/,
-    moy : /^(?:[0-9]|1[0-9]|20)(?:\.\d+)$/
+    NOM : /^[A-Za-z\s]{2,10}$/,
+    VILLE : /^[A-Za-z\s]{2,10}$/,
+    MOYENNE : /^(?:[0-9]|1[0-9]|20)(?:\.\d+)?$/
 }
 
 const initialState = Object.keys(InputType).map(key=>({
@@ -23,16 +23,17 @@ const initialState = Object.keys(InputType).map(key=>({
 }))
 
 function checkContent(type , value){
+    console.log(type,value)
+    if(type ){
+        if (( type==="NOM" || type==="VILLE")  && InputPattern[type].test(value)) return true
+        if (type==="MOYENNE" && InputPattern.MOYENNE.test(Number(value))) return true;
 
-    const typeName = InputType[type]
-    if(typeName ){
-
-        return ( typeName==="NOM" || typeName==="VILLE")  && InputPattern[type].test(value)
-        ? true
-        :false
-
+        return type==="CODEPOSTAL" || type==="ID" || type=== "MATRICULE"
+        ? true : false
 
     }
+
+    return false
 }
 
 const formSlice = createSlice({
@@ -48,7 +49,10 @@ const formSlice = createSlice({
                 if(inputToUpdate){
 
                     
-                    inputToUpdate.value = value 
+                    inputToUpdate.value = value
+                    checkContent(type,value) 
+                    ? inputToUpdate.errorMes = ""
+                    : inputToUpdate.errorMes = "error"
                 }    
         }
     }
