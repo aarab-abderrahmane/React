@@ -1,11 +1,10 @@
-import {Form} from './components/form'
-
+import { InternForm } from "./components/InternFrom"
 function App() {
 
 
   return (
     <div className='w-full flex justify-center '>
-        <Form/>
+        <InternForm/>
 
     </div>
   )
