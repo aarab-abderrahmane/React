@@ -2,7 +2,7 @@ import React from 'react';
 import { Loader2 } from 'lucide-react';
 
 
-export const Button = () => ({ 
+export const Button = ({ 
   children, 
   variant = 'primary', 
   size = 'md', 
@@ -11,10 +11,10 @@ export const Button = () => ({
   className = '',
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg active:scale-95";
+  const baseStyles = "inline-flex items-center  justify-center font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed rounded-3xl active:scale-95";
   
   const variants = {
-    primary: "bg-primary-600 hover:bg-primary-700 text-white shadow-sm shadow-primary-500/30 focus:ring-primary-500",
+    primary: "bg-blue-600 hover:bg-primary-700 text-white shadow-sm shadow-primary-500/30 focus:ring-primary-500",
     secondary: "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-sm focus:ring-slate-200",
     danger: "bg-red-50 text-red-600 hover:bg-red-100 border border-transparent focus:ring-red-500",
     ghost: "bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:ring-slate-200",
