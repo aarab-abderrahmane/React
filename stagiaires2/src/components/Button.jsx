@@ -17,7 +17,7 @@ export const Button = ({
     primary: "bg-blue-600 hover:bg-primary-700 text-white shadow-sm shadow-primary-500/30 focus:ring-primary-500",
     secondary: "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-sm focus:ring-slate-200",
     danger: "bg-red-50 text-red-600 hover:bg-red-100 border border-transparent focus:ring-red-500",
-    ghost: "bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:ring-slate-200",
+    ghost: "  hover:text-slate-900 focus:ring-slate-200",
     outline: "bg-transparent border border-slate-300 text-slate-700 hover:border-primary-500 hover:text-primary-600 focus:ring-primary-500"
   };
 

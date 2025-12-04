@@ -30,7 +30,7 @@ export const InterList = ()=>{
             {stagiairesData.map((stagiaire) => (
               <tr 
                 key={stagiaire.id} 
-                className="hover:bg-[var(--bg-hover)]  transition-colors group"
+                className="hover:bg-white/70  transition-colors group"
               >
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
