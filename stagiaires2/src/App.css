@@ -12,3 +12,22 @@
   font-weight: 400;
   font-style: normal;
 }
+
+
+.noise {
+  background:
+    radial-gradient(circle at center,
+      rgba(0,0,0,0.45) 100%,
+      rgba(0,0,0,0.25) 100%,
+      rgba(0,0,0,0.05) 100%,
+      rgba(0,0,0,0) 100%
+    ),
+    url(https://grainy-gradients.vercel.app/noise.svg);
+}
+
+
+
+.card-noise {
+   background: linear-gradient(to bottom, rgba(7, 255, 23, 0.54), rgba(0, 0, 0, 1)), url(https://grainy-gradients.vercel.app/noise.svg);
+
+}

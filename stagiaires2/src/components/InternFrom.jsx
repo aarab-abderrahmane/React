@@ -78,7 +78,7 @@ export const InternForm = ({initialData=""})=>{
 
 
 
-        <div className="bg-[var(--bg-secondary)] rounded-3xl shadow-sm overflow-hidden sticky top-6">
+        <div className="bg-[var(--bg-secondary)] noise rounded-3xl shadow-sm overflow-hidden sticky top-6 border border-dashed border-white/10">
       {/* <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
         <h3 className="font-semibold text-slate-800 flex items-center gap-2">
           {initialData ? <UserPlus className="w-5 h-5 text-primary-600" /> : <UserPlus className="w-5 h-5 text-emerald-600" />}
@@ -116,7 +116,7 @@ export const InternForm = ({initialData=""})=>{
                 value={GetValue(InputType.nom)}
                 onChange={handleChange}
               placeholder="Doe"
-              className={`w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 transition-all bg-black`}
+              className={`w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 transition-all bg-black/70`}
 
             //   className={`w-full px-3 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 transition-all ${errors.lastName ? 'border-red-300 focus:ring-red-100' : 'border-slate-200 focus:ring-primary-100 focus:border-primary-400'}`}
             />
@@ -136,7 +136,7 @@ export const InternForm = ({initialData=""})=>{
                 value={GetValue(InputType.ville)}
                 onChange={handleChange}
               placeholder="Paris"
-              className={`w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 transition-all bg-black`}
+              className={`w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 transition-all bg-black/70`}
 
             //   className={`w-full px-3 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 transition-all ${errors.city ? 'border-red-300 focus:ring-red-100' : 'border-slate-200 focus:ring-primary-100 focus:border-primary-400'}`}
             />
@@ -149,7 +149,7 @@ export const InternForm = ({initialData=""})=>{
               value={GetValue(InputType.code)}
                 onChange={handleChange}
               placeholder="75001"
-              className="w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-400 transition-all bg-black"
+              className="w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-400 transition-all bg-black/70"
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ export const InternForm = ({initialData=""})=>{
               name="mat"
               value={GetValue(InputType.mat)}
                 onChange={handleChange}
-              className="w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-400 transition-all bg-black"
+              className="w-full px-3 py-2 text-sm text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-400 transition-all bg-black/70"
             />
           </div>
           <div className="space-y-1.5">
@@ -174,7 +174,7 @@ export const InternForm = ({initialData=""})=>{
               min="0"
               max="40"
               step="0.1"
-              className="w-full px-3 py-2 text-sm   rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-400 transition-all bg-black text-white"
+              className="w-full px-3 py-2 text-sm   rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-400 transition-all bg-black/70 text-white"
 
             //   className={`w-full px-3 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 transition-all ${errors.averageScore ? 'border-red-300 focus:ring-red-100' : 'border-slate-200 focus:ring-primary-100 focus:border-primary-400'}`}
             />

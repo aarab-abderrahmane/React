@@ -3,10 +3,10 @@ import { Edit2, Trash2, MapPin, Award } from 'lucide-react';
 import { Button } from "./Button";
 
 const getScoreColor = (score) => {
-  if (score >= 16) return 'bg-emerald-300 text-emerald-900 border-emerald-900';
-  if (score >= 12) return 'bg-blue-300 text-blue-900 border-blue-900';
-  if (score >= 10) return 'bg-amber-300 text-amber-900 border-amber-900';
-  return 'bg-rose-300 text-rose-900 border-rose-900';
+  if (score >= 16) return 'bg-emerald-300 text-emerald-900 border-2 border-emerald-900';
+  if (score >= 12) return 'bg-blue-300 text-blue-900 border-2 border-blue-900';
+  if (score >= 10) return 'bg-amber-300 text-amber-900 border-2 border-amber-900';
+  return 'bg-rose-300 text-rose-900 border-2 border-rose-900';
 };
 
 export const InterList = ()=>{
@@ -14,11 +14,11 @@ export const InterList = ()=>{
     const stagiairesData =   useSelector(state=> state.stagiaireReducer)
 
  return (
-    <div className="bg-[var(--bg-secondary)] rounded-xl shadow-sm overflow-hidden ">
+    <div className="bg-[var(--bg-secondary)]  rounded-xl shadow-sm overflow-hidden ">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[var(--bg-secondary)] border-b border-white/50">
+            <tr className="bg-[var(--bg-secondary)] border-b border-white/50  ">
               <th className="px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">stagiaire</th>
               <th className="px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Matricule</th>
               <th className="px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Location</th>
@@ -66,7 +66,7 @@ export const InterList = ()=>{
                       variant="ghost" 
                       size="sm" 
                     //   onClick={() => onEdit(stagiaire)}
-                      className="!p-2 text-blue-600 hover:text-blue-900 hover:bg-blue-400"
+                      className="!p-2 text-slate-400 group-hover:text-black/70 hover:text-blue-900 hover:bg-blue-400"
                     >
                       <Edit2 className="w-4 h-4" />
                     </Button>
@@ -74,7 +74,7 @@ export const InterList = ()=>{
                       variant="ghost" 
                       size="sm" 
                     //   onClick={() => onDelete(stagiaire.id)}
-                      className="!p-2 text-blue-600 hover:text-red-900 hover:bg-red-400"
+                      className="!p-2 text-slate-400 group-hover:text-black/70 hover:text-red-900 hover:bg-red-400"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
@@ -87,7 +87,7 @@ export const InterList = ()=>{
       </div>
       
       {/* Pagination Placeholder for UI Completeness */}
-      <div className="px-6 py-4 border-t border-slate-200 bg-white/70 flex items-center justify-between">
+      <div className="px-6 py-4 border-t border-black bg-white/70 flex items-center justify-between">
         <span className="text-xs text-black ">Showing {stagiairesData.length} entries</span>
         <div className="flex gap-1">
           <button className="px-3 py-1 text-xs text-black  border border-black rounded-3xl hover:bg-white disabled:opacity-50" disabled >Previous</button>
