@@ -7,6 +7,7 @@ import { InterList } from "./components/InterList";
 import {StatCard } from './components/StatCard'
 
 import { useSelector } from "react-redux";
+import {BackgroundBeams} from './components/ui/background-beams'
 
 import './App.css'
 
@@ -21,7 +22,10 @@ function App() {
 
       const total = stagiaireData.length ; 
       const avgScore = total > 0
-        ? stagiaireData.reduce((acc,curr)=> acc + curr.moyenne , 0) / total
+        ? stagiaireData.reduce((acc,curr)=>{
+            console.log(acc , curr.moyenne)
+          return acc + Number(curr.moyenne)
+        } , 0) / total
         :0 ; 
         
       console.log(stagiaireData)
@@ -41,8 +45,9 @@ function App() {
 
   return (
 
-    <div className="min-h-screen bg-black pb-12 font-sans text-slate-900  ">
+          <div className="min-h-screen bg-black pb-12 font-sans text-slate-900  ">
 
+<BackgroundBeams></BackgroundBeams>
         <header className="sticky top-0 z-30 bg-gray-950  backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -84,7 +89,7 @@ function App() {
                       />
                       <StatCard 
                         label="Average Score" 
-                        value={stats.avgScore} 
+                        value={stats.avgScore.toFixed(2)} 
                         icon={<GraduationCap className="w-5 h-5" />}
                         trend="+0.4 points"
                         trendUp={true}
@@ -195,6 +200,7 @@ function App() {
         </main>
 
     </div>
+
   )
 }
 

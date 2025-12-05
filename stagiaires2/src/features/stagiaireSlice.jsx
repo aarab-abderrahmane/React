@@ -20,14 +20,18 @@ export const stagiaireSlice = createSlice({
 
             state.push(action.payload)
 
-        } 
+        } ,
+        DELETE_STAGIAIRE : (state,action)=>{
+            const stagiaireIndex = state.findIndex(stg=>stg.id===action.payload.id)
+            state.splice(stagiaireIndex,1)
+        }
     }
 
 
 
 })
 
-export const {ADD_STGIAIRE} = stagiaireSlice.actions ; 
+export const {ADD_STGIAIRE,DELETE_STAGIAIRE} = stagiaireSlice.actions ; 
 // export default stagiaireSlice.reducer
 const {reducer} = stagiaireSlice // destructuring 
 export default reducer
