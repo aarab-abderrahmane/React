@@ -1,4 +1,4 @@
-import reducer, { addBook, deleteBook, addLike } from './booksSlice'
+import reducer, { addBook, deleteBook, addLike, setSearch } from './booksSlice'
 import { describe, test, it, expect } from 'vitest'
 
 
@@ -25,5 +25,17 @@ describe('booksSlice reducers', () => {
       addLike(1)
     )
     expect(state.items[0].likes).toBe(1)
+  })
+
+  it('should update search term ', ()=>{
+
+      const state = reducer(
+        {items : [] , search : ''},
+        setSearch("abde")
+      )
+
+      expect(state.search.length>3 ? true : false ).toBe(true)
+      console.log(state)
+
   })
 })
