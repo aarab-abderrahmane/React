@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ProductCard from './ProductCard';
+import {ProductCard} from './productCard';
 import { fetchProducts } from '../slices/ProductsSlice';
 import { addToCart } from '../slices/cartSlice';
 
-const ProductsList = () => {
+export const ProductsList = () => {
   const dispatch = useDispatch();
   const { filteredItems, loading } = useSelector(state => state.products);
-
+  
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -33,4 +33,3 @@ const ProductsList = () => {
   );
 };
 
-export default ProductsList;

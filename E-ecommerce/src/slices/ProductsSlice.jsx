@@ -8,7 +8,7 @@ export const fetchProducts = createAsyncThunk(
     const data = await response.json();
     return data.map(item => ({
       ...item,
-      image: `https://picsum.photos/200/300?random=${item.id}`,
+      image: item.image || `https://picsum.photos/200/300?random=${item.id}`,
       color: ['Black', 'Blue', 'Red', 'Green', 'White'][Math.floor(Math.random() * 5)],
       brand: ['Nike', 'Adidas', 'Puma', 'Vans'][Math.floor(Math.random() * 4)]
     }));
@@ -112,6 +112,7 @@ const productSlice = createSlice({
         state.error = action.error.message;
       });
   }
+  
 });
 
 export const {

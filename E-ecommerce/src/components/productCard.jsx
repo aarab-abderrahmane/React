@@ -2,9 +2,7 @@ import React from "react";
 
 export const ProductCard = ({ product, onAddToCart }) => {
 
-  // style={{ backgroundColor: product.color.toLowerCase() }}
 
-  console.log("color : ", product)
   return (
     <div className="product-card">
       <img src={product.image} alt={product.title} />
@@ -15,7 +13,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
         {'⭐'.repeat(Math.round(product.rating.rate))} ({product.rating.rate})
       </div>
       <p className="price">${product.price}</p>
-      <div className="color-indicator" ></div>
+      <div className="color-indicator" style={{ backgroundColor: product.color.toLowerCase() }}></div>
       <button onClick={() => onAddToCart(product)} className="add-to-cart">
         Add to Cart
       </button>

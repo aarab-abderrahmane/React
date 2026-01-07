@@ -1,6 +1,6 @@
 import React, {  useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {modifyQuantity , removeFromCart} from "../slices/cartSlice"
+import {modifyQuantity , removeFromCart , incrementQuantity , decrementQuantity} from "../slices/cartSlice"
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const Cart = () => {
             {cartItems.length === 0 ? (
               <p>Your cart is empty</p>
             ) : (
-              <>
+              <>  
                 {cartItems.map(item => (
                   <div key={item.id} className="cart-item">
                     <img src={item.image} alt={item.title} />
@@ -30,9 +30,9 @@ export const Cart = () => {
                       <h4>{item.title.substring(0, 30)}...</h4>
                       <p>${item.price}</p>
                       <div className="quantity-controls">
-                        <button onClick={() => dispatch(modifyQuantity({ id: item.id, quantity: item.quantity - 1 }))}>-</button>
+                        <button  onClick={() => dispatch(decrementQuantity(item.id))}>-</button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => dispatch(modifyQuantity({ id: item.id, quantity: item.quantity + 1 }))}>+</button>
+                        <button onClick={() => dispatch(incrementQuantity(item.id))}>+</button>
                       </div>
                     </div>
                     <button onClick={() => dispatch(removeFromCart(item.id))} className="remove-btn">×</button>
