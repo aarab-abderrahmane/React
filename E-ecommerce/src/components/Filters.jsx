@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {filterByPrice , filterByColor , filterByCategory , filterByBrand} from '../slices/ProductsSlice'
 
+import BasicRating from './rating'
+
 export const Filters = () => {
   const dispatch = useDispatch();
   const { items, filters } = useSelector(state => state.products);
@@ -45,6 +47,9 @@ export const Filters = () => {
           value={filters.priceRange[1]}
           onChange={(e) => dispatch(filterByPrice([0, parseInt(e.target.value)]))}
         />
+      </div>
+      <div className="filter-group">
+        <BasicRating/>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { addToCart } from '../slices/cartSlice';
 export const ProductsList = () => {
   const dispatch = useDispatch();
   const { filteredItems, loading } = useSelector(state => state.products);
-  
+  console.log("filtred Items",filteredItems)
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);

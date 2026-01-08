@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { current } from '@reduxjs/toolkit';
+
 
 // Async thunk for fetching products
 export const fetchProducts = createAsyncThunk(
@@ -17,6 +19,11 @@ export const fetchProducts = createAsyncThunk(
 
 // Helper function to apply all filters
 const applyFilters = (state) => {
+
+  console.log("all products",state.items)
+  console.log("applyfilters", current(state.filters));
+
+
   state.filteredItems = state.items.filter(item => {
     const categoryMatch = 
       state.filters.category === 'all' || 
@@ -33,8 +40,17 @@ const applyFilters = (state) => {
     const brandMatch = 
       state.filters.brand === 'all' || 
       item.brand === state.filters.brand;
+
+
+    const ratingMatch = 
+      state.filters.rate === "all" || 
+      Math.trunc(item.rating.rate) === state.filters.rate
+
+
+      console.log(item.rating.rate , Math.trunc(item.rating.rate))
+
     
-    return categoryMatch && priceMatch && colorMatch && brandMatch;
+    return categoryMatch && priceMatch && colorMatch && brandMatch && ratingMatch;
   });
 };
 
@@ -49,7 +65,8 @@ const productSlice = createSlice({
       category: 'all',
       priceRange: [0, 1000],
       color: 'all',
-      brand: 'all'
+      brand: 'all',
+      rate : "all"
     }
   },
   reducers: {
@@ -68,8 +85,15 @@ const productSlice = createSlice({
       applyFilters(state);
     },
     filterByBrand: (state, action) => {
-      state.filters.brand = action.payload;
+      state.filters.brand =  action.payload;
       applyFilters(state);
+    },
+
+    filterByRating : (state , action)=>{
+      console.log(action.payload)
+      state.filters.rate = action.payload===5 ? "all" : action.payload;
+      applyFilters(state)
+
     },
     
     // Reset all filters
@@ -78,7 +102,8 @@ const productSlice = createSlice({
         category: 'all',
         priceRange: [0, 1000],
         color: 'all',
-        brand: 'all'
+        brand: 'all',
+        rate : 'all'
       };
       state.filteredItems = state.items;
     },
@@ -121,7 +146,9 @@ export const {
   filterByColor,
   filterByBrand,
   resetFilters,
-  modifyRating
+  modifyRating,
+  filterByRating
+  
 } = productSlice.actions;
 
 export default productSlice.reducer;
