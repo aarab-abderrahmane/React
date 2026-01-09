@@ -1,0 +1,72 @@
+[
+  {
+    "nom": "CHAKIRI",
+    "prenom": "Laila",
+    "Ville": "Fes",
+    "Fil": "Web et full stack",
+    "photo": "https://picsum.photos/200/300?random=1"
+  },
+  {
+    "nom": "OUAFI",
+    "prenom": "Aanss",
+    "Ville": "Tanger",
+    "Fil": "Web désigner",
+    "photo": "https://picsum.photos/200/300?random=2"
+  },
+  {
+    "nom": "BADRAOUI",
+    "prenom": "Ikram",
+    "Ville": "Meknes",
+    "Fil": "Dev Mobile",
+    "photo": "https://picsum.photos/200/300?random=3"
+  },
+  {
+    "nom": "NACIRI",
+    "prenom": "Hassan",
+    "Ville": "Casablanca",
+    "Fil": "Web et full stack",
+    "photo": "https://picsum.photos/200/300?random=4"
+  },
+  {
+    "nom": "EL AMRANI",
+    "prenom": "Youssef",
+    "Ville": "Rabat",
+    "Fil": "Data Science",
+    "photo": "https://picsum.photos/200/300?random=5"
+  },
+  {
+    "nom": "BENALI",
+    "prenom": "Sara",
+    "Ville": "Agadir",
+    "Fil": "UI / UX Design",
+    "photo": "https://picsum.photos/200/300?random=6"
+  },
+  {
+    "nom": "EL FASSI",
+    "prenom": "Omar",
+    "Ville": "Oujda",
+    "Fil": "Cyber Security",
+    "photo": "https://picsum.photos/200/300?random=7"
+  },
+  {
+    "nom": "TAZI",
+    "prenom": "Khadija",
+    "Ville": "Kenitra",
+    "Fil": "DevOps",
+    "photo": "https://picsum.photos/200/300?random=8"
+  },
+  {
+    "nom": "SAIDI",
+    "prenom": "Anas",
+    "Ville": "Safi",
+    "Fil": "Backend Node.js",
+    "photo": "https://picsum.photos/200/300?random=9"
+  },
+  {
+    "nom": "IDRISSI",
+    "prenom": "Meryem",
+    "Ville": "Tetouan",
+    "Fil": "QA Testing",
+    "photo": "https://picsum.photos/200/300?random=10"
+  }
+]
